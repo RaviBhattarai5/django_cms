@@ -1,0 +1,86 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'includes/head.html' %}
+  </head>
+
+  <body>
+    {% include 'includes/mob-sidebar.html' %}
+    <div>{% include 'includes/sidebar.html' %}</div>
+
+    <main class="content">
+      <nav
+        class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0"
+      >
+        {% include 'includes/nav.html' %}
+      </nav>
+      <div class="py-4">
+        {% include 'includes/breadcrumb.html' %}
+        <div class="d-flex justify-content-between w-100 flex-wrap">
+          <div class="mb-3 mb-lg-0">
+            <h1 class="h4">
+              {%if page_title%} {{page_title}} {%else%} Dashboard {%endif%}
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mb-4">
+          <div class="card border-0 shadow components-section">
+            <div class="card-body">
+              {% block content %}{% endblock content %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% include 'includes/footer.html' %}
+      <!-- Javascripts -->
+      {% block javascripts %}{% endblock javascripts %}
+    </main>
+
+    <!-- Core -->
+    <script src="{%static 'assets/vendor/@popperjs/core/dist/umd/popper.min.js'%}"></script>
+    <script src="{%static 'assets/vendor/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+
+    <!-- Vendor JS -->
+    <script src="{%static 'assets/vendor/onscreen/dist/on-screen.umd.min.js'%}"></script>
+
+    <!-- Slider -->
+    <script src="{%static 'assets/vendor/nouislider/dist/nouislider.min.js'%}"></script>
+
+    <!-- Smooth scroll -->
+    <script src="{%static 'assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'%}"></script>
+
+    <!-- Charts -->
+    <script src="{%static 'assets/vendor/chartist/dist/chartist.min.js'%}"></script>
+    <script src="{%static 'assets/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js'%}"></script>
+
+    <!-- Datepicker -->
+    <script src="{%static 'assets/vendor/vanillajs-datepicker/dist/js/datepicker.min.js'%}"></script>
+
+    <!-- Sweet Alerts 2 -->
+    <script src="{%static 'assets/vendor/sweetalert2/dist/sweetalert2.all.min.js'%}"></script>
+
+    <!-- Moment JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
+    <!-- Vanilla JS Datepicker -->
+    <script src="{%static 'assets/vendor/vanillajs-datepicker/dist/js/datepicker.min.js'%}"></script>
+
+    <!-- Notyf -->
+    <script src="{%static 'assets/vendor/notyf/notyf.min.js'%}"></script>
+
+    <!-- Simplebar -->
+    <script src="{%static 'assets/vendor/simplebar/dist/simplebar.min.js'%}"></script>
+
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Volt JS -->
+    <script src="{%static 'assets/assets/js/volt.js'%}"></script>
+  </body>
+</html>
