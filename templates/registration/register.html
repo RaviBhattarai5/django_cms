@@ -1,9 +1,19 @@
-{% extends "layouts/outer-base.html" %} {%block title%} Sign In {%endblock %}
+{% extends "layouts/outer-base.html" %}
+ {%block title%} Sign In {%endblock %}
+ {% include '../includes/alertifyjs.html' %}
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 
 <!-- Page Content  -->
 {% block content %}
+{% for flashmsg in messages %}
+<script>
+
+   alertify.set('notifier', 'position', 'top-right');
+   alertify.success("{{ flashmsg|escapejs }}");
+
+</script>
+{% endfor %}
 <main>
   <!-- Section -->
   <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
@@ -45,7 +55,7 @@
                     class="form-control"
                     placeholder="Username"
                     id="id_username"
-                    name="username"
+                    name="email"
                     autofocus
                     required
                   />
@@ -82,6 +92,35 @@
                   </div>
                 </div>
                 <!-- End of Form -->
+                <!-- Form -->
+                <div class="form-group mb-4">
+                  <label for="password">Your Confirm_Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon2">
+                      <svg
+                        class="icon icon-xs text-gray-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </span>
+                    <input
+                      type="password"
+                      name="confirm_password"
+                      placeholder="Confirm_password"
+                      class="form-control"
+                      id="id_password"
+                      required
+                    />
+                  </div>
+                </div>
+                <!-- End of Form -->
                 <div
                   class="d-flex justify-content-between align-items-top mb-4"
                 >
@@ -110,7 +149,7 @@
             <div class="d-flex justify-content-center align-items-center mt-4">
               <span class="fw-normal">
                 Not registered?
-                <a href="{% url 'register' %}" class="fw-bold">Create account</a>
+                <a href="./sign-up.html" class="fw-bold">Create account</a>
               </span>
             </div>
           </div>
