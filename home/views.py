@@ -24,7 +24,7 @@ def register(request):
             validate_password(password)
             if password==confirm_password:
                 if User.objects.filter(username=email).exists():
-                    messages.info(request, 'Email is already exists')
+                    messages.info(request, 'Email is already exists !!')
                     return redirect('register')
                 else:
                     User.objects.create_user(username=email, password=password)

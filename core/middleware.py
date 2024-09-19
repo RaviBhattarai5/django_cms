@@ -24,8 +24,7 @@ class RedirectIfNotLoggedInMiddleware:
 
     def __call__(self, request):
         login_url = reverse('login')
-        register_url = reverse('register')  # Add the register URL
-        dashboard_url = reverse('dashboard')
+        register_url = reverse('register')  
         
         # Redirect unauthenticated users trying to access any page except login or register
         if not request.user.is_authenticated:
