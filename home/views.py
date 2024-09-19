@@ -41,3 +41,28 @@ def register(request):
     return render(request, 'registration/register.html')
 
 
+def log_in(request):
+    if request.method=="POST":
+        username=request.POST['email']
+        password=request.POST['password']
+        if not username or not password:
+            messages.error(request, 'All fields are required.')
+            return redirect('login')
+
+        if not User.objects.filter(username=username).exists():
+            messages.info(request, 'User is not register yet !!')
+            return redirect('login')
+        user=authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'invalid keyword !!')
+            return redirect('login')
+    return render(request, 'registration/login.html')
+
+def log_out(request):
+    logout(request)
+    return redirect('login')
+
+
