@@ -6,5 +6,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('', include('apps.menu.urls')),
     path('roles/', include('apps.roles.urls')),
-    path('', include('role.urls')),
+    # path('', include('role.urls')),
 ]

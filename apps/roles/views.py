@@ -19,7 +19,7 @@ class RolesView(View):
         form = RolesForm() 
        
 
-        paginator = Paginator(roles, 2)
+        paginator = Paginator(roles, 5)
         page_number = request.GET.get('page')
         servicedatafinal = paginator.get_page(page_number)
         totalpage = servicedatafinal.paginator.num_pages
