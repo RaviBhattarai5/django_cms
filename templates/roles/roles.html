@@ -1,229 +1,125 @@
 {% extends "layouts/base.html" %}
 
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
-{% endblock stylesheets %}
-<!-- Page Content  -->
 {% block content %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
 <style>
-     input{
+    input {
         width: 100%;
         height: 40px;
     }
-    textarea{
+    textarea {
         width: 100%;
         height: 60px;
     }
 </style>
+
 {% for flashmsg in messages %}
 <script>
-
     alertify.set('notifier', 'position', 'top-right');
     alertify.success("{{ flashmsg|escapejs }}");
-
 </script>
 {% endfor %}
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-        <div class="d-block mb-4 mb-md-0">
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
-                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
-                    <li class="breadcrumb-item">
-                        <a href="#">
-                            <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item"><a href="#">Volt</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Transactions</li>
-                </ol>
-            </nav>
-            <h2 class="h4">All Orders</h2>
-            <p class="mb-0">Your web analytics dashboard template.</p>
-        </div>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="{% url 'roles' %}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                New Plan
-            </a>
-            <div class="btn-group ms-2 ms-lg-3">
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
-            </div>
-        </div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+            <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                <li class="breadcrumb-item"><a href="#"><svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg></a></li>
+                <li class="breadcrumb-item"><a href="#">Volt</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Transactions</li>
+            </ol>
+        </nav>
+        <h2 class="h4">All Roles</h2>
+        <p class="mb-0">Manage your roles here.</p>
     </div>
-
-    <div class="card card-body border-0 shadow table-wrapper table-responsive">
-        <table class="table table-hover m-3" id="table_db" class="table table-bordered table-hover" style="width: 100%">
-            <thead>
-                <tr>
-                    <th class="border-gray-200">#</th>
-                    <th class="border-gray-200">Role</th>						
-                    <th class="border-gray-200">Description</th>
-                    <th class="border-gray-200">Action</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Item -->
-                {% for role in data %}
-                <tr>
-                    <td>
-                        <a href="#" class="fw-bold">
-                            {{ forloop.counter }}. {{ item.name }}
-                        </a>
-                    </td>
-                    <td>
-                        <span class="fw-normal">{{role.role_name}}</span>
-                    </td>
-                    <td><span class="fw-normal">{{role.descriptions}}</span></td> 
-                    <td>
-                        <input type="checkbox" disabled {% if role.isRole %} checked {% endif %} style="width: 20px;">
-                    </td>
-                    
-                    <td>
-                        <a href="{% url 'edit' role.id %}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center ms-3 "><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                        <a href="{% url 'delete' role.id %}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center ms-3 "><i class="fa fa-times" aria-hidden="true"></i></a>
-
-                    </td>                       
-
-                </tr>
-                {% endfor %}                              
-            </tbody>
-        </table>
-        <!-- <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination mb-0">
-                    <li class="page-item">
-                        <a class="page-link" href="#">Previous</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="fw-normal small mt-4 mt-lg-0">Showing <b>5</b> out of <b>25</b> entries</div>
-        </div> -->
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="#" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+            New Role
+        </a>
     </div>
-    <!-- ! Modal Form  -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+</div>
+
+<div class="card card-body border-0 shadow table-wrapper table-responsive">
+    <table class="table table-hover m-3">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Role</th>
+                <th>Description</th>
+                <th>Is Role Active?</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for role in roles %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ role.id}}</td>
+                <td>{{ role.role_name }}</td>
+                <td>{{ role.descriptions }}</td>
+                <td><input type="checkbox" disabled {% if role.isRole %} checked {% endif %} style="width: 20px;"></td>
+                <td>
+                    <a href="{% url 'edit' role.id %}" class="btn btn-sm btn-gray-800"><i class="fa fa-pencil-square"></i></a>
+                    <a href="{% url 'delete' role.id %}" class="btn btn-sm btn-gray-800"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="card-footer px-3 d-flex flex-column flex-lg-row align-items-center justify-content-between">
+        <nav aria-label="Page navigation">
+            <ul class="pagination mb-0">
+                {% if roles.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ roles.previous_page_number }}">Previous</a>
+                </li>
+                {% endif %}
+                {% for n in totalPagelist %}
+                <li class="page-item"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                {% endfor %}
+                {% if roles.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ roles.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="small mt-4 mt-lg-0">Showing <b>{{ roles.start_index }}</b> to <b>{{ roles.end_index }}</b> of <b>{{ roles.paginator.count }}</b> entries</div>
+    </div>
+</div>
+
+<!-- Modal Form -->
+<div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Role</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Form... -->
-          <form method="post" class="mt-4">
-            <!-- Form -->
-            {% csrf_token %}
-            <div class="form-group mb-4">
-                <label for="username">{{ form.role_name.label_tag }}</label>
-                <div class="input-group">
-                    </span>
-                    <!-- <input type="text" class="form-control" placeholder="role" id="id_role"
-                        name="role_name" autofocus /> -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">New Role</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group mb-4">
+                        <label for="role_name">{{ form.role_name.label }}</label>
                         {{ form.role_name }}
-                        
-                </div>
-            </div>
-            <!-- End of Form -->
-            <div class="form-group">
-                <!-- Form -->
-                <div class="form-group mb-4">
-                    <label for="descriptions">Descriptions</label>
-                    <div class="input-group">
-                        <!-- <input type="text" name="descriptions" placeholder="descriptions"
-                            class="form-control" id="id_password" /> -->
-                            {{ form.descriptions }}
                     </div>
-                </div>
-                <!-- End of Form -->
-
+                    <div class="form-group mb-4">
+                        <label for="descriptions">{{ form.descriptions.label }}</label>
+                        {{ form.descriptions }}
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="isRole">{{ form.isRole.label }}</label>
+                        {{ form.isRole }}
+                    </div>
+                    <button type="submit" class="btn btn-gray-800">Submit</button>
+                </form>
             </div>
-            <div class="form-group mb-4">
-                <div class="input-group d-flex align-items-center">
-                    <small class="form-text text-muted me-2 mb-3">Select the appropriate role.</small>
-                    <span style="width: 20px;">{{ form.isRole }}</span>
-                </div>
-            </div>
-            
-            
-            <div class="d-grid">
-                <button type="submit" class="btn btn-gray-800">Sign In</button>
-            </div>
-        </form>
-
-          <!-- Form -->
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
-        </div> -->
-      </div>
     </div>
-  </div>
-    <!-- ! -->
- 
-</main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- Bootstrap & Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
- 
-<!-- <script>
-    $(document).ready(function () {
-    $('#table_db').DataTable( {
-        "paging": true,
-        "searching": true,
-        "autoWidth": false,
-        "ordering": true,
-        "pageLength": 5,
-        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ], 
-        "columnDefs": [
-            {"width": "100px", "targets": 0},
-            {"width": "100px", "targets": 1},
-            {"width": "50px", "targets": 2},
-        ],
-    }
-    );
-} );
-</script>
-<style>
-    .dataTables_filter input {
-        width: 300px; /* Adjust the width as needed */
-    }
-    .dataTables_filter{
-        position: absolute;
-        right: 20px;
-    }
-    .pagination{
-        position: absolute;
-        right: 20px;
-    }
-    .dataTables_length{
-        width: 100% !important;
-    }
-</style> -->
+</div>
+{% endblock %}
 
-
-{% endblock content %}
-<!-- Specific Page JS goes HERE  -->
 {% block javascripts %}{% endblock javascripts %}
