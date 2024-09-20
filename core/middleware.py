@@ -11,9 +11,7 @@ class RedirectIfNotLoggedInMiddleware:
         # role_url = reverse('role') 
         
         # Redirect unauthenticated users trying to access any page except login or register
-        if request.path =='':
-            return redirect('login')
-        elif not request.user.is_authenticated:
+        if not request.user.is_authenticated:
             if request.path not in [login_url, register_url]:
                 return redirect('login')
         
