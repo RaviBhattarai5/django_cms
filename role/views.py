@@ -14,4 +14,24 @@ def role(request):
     }
     return render(request, 'role.html', context)
 
+def role_update(request, id):
+    role_user=Role.objects.get(id=id)
+    if request.method=="POST":
+        role_user.role_name=request.POST['role_name']
+        role_user.descriptions=request.POST['role_name']
+        role_user.isRole=request.POST['isRole']
+        role_user.save()
+        return redirect('role')
+    return render(request, 'role.html')
+
+
+def role_delete(request, id):
+    role_user=Role.objects.get(id=id)
+    role_user.delete()
+    return redirect('login')
+
+
+
+        
+
         
