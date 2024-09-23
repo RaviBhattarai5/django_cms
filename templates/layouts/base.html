@@ -16,14 +16,22 @@
       >
         {% include 'includes/nav.html' %}
       </nav>
-      <div class="py-4">
-        {% include 'includes/breadcrumb.html' %}
-        <div class="d-flex justify-content-between w-100 flex-wrap">
-          <div class="mb-3 mb-lg-0">
-            <h1 class="h4">
-              {%if page_title%} {{page_title}} {%else%} Dashboard {%endif%}
-            </h1>
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4"
+      >
+        <div class="d-block mb-4 mb-md-0">
+          {% include 'includes/breadcrumb.html' %}
+          <div class="d-flex justify-content-between w-100 flex-wrap">
+            <div class="mb-3 mb-lg-0">
+              <h1 class="h4">
+                {%if page_title%} {{page_title}} {%else%} Dashboard {%endif%}
+              </h1>
+            </div>
           </div>
+        </div>
+
+        <div class="btn-toolbar mb-2 mb-md-0">
+          {% block index_action %}{% endblock index_action %}
         </div>
       </div>
 
@@ -81,6 +89,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <!-- Volt JS -->
-    <script src="{%static 'assets/assets/js/volt.js'%}"></script>
+    <script src="{%static 'assets/js/volt.js'%}"></script>
   </body>
 </html>

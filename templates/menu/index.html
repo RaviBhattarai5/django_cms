@@ -1,9 +1,60 @@
 {% extends "layouts/base.html" %}
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
+
+<!-- Index Top Action Btn  -->
+{% block index_action %}
+<!-- Action Template  -->
+{% include 'includes/index/action.html' %} {%endblock index_action%}
 <!-- Page Content  -->
 {% block content %}
-<main class="content"></main>
+<div class="border-0 shadow table-wrapper table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="border-gray-200">#</th>
+        <th class="border-gray-200">Title</th>
+        <th class="border-gray-200">Parent</th>
+        <th class="border-gray-200">URL</th>
+        <th class="border-gray-200">Position</th>
+        <th class="border-gray-200">Publish</th>
+        <th class="border-gray-200">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for menu in menus %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ menu.id}}</td>
+        <td>{{ menu.title }}</td>
+        <td>
+          {% if menu.parent %} {{ menu.parent.title }} {% else %} No Parent
+          {%endif%}
+        </td>
+        <td>{{ menu.url }}</td>
+        <td>{{ menu.position }}</td>
+        <td>{{ menu.publish }}</td>
+        <td>
+          <a
+            href="{% url 'menu_update' menu.id %}"
+            class="btn btn-sm btn-gray-800"
+            ><i class="fa fa-pencil-square"></i
+          ></a>
+          <a
+            href="{% url 'menu_delete' menu.id %}"
+            class="btn btn-sm btn-gray-800"
+            ><i class="fa fa-times"></i
+          ></a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td class="text-center" colspan="7">No menus recorded.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock content %}
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}{% endblock javascripts %}
