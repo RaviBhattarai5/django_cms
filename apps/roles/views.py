@@ -1,12 +1,7 @@
-from django.shortcuts import render, redirect
-# 
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, CreateView, DeleteView, ListView
 from django.views.generic.edit import UpdateView
-from .models import Roles
-
-from django.views import View
 from django.shortcuts import render, redirect
 from .models import Roles
 from .forms import RolesForm
