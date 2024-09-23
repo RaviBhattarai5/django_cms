@@ -19,5 +19,4 @@ class RedirectIfNotLoggedInMiddleware:
         elif request.user.is_authenticated:
             if request.path == login_url:
                 return redirect('dashboard')
-
         return self.get_response(request)
