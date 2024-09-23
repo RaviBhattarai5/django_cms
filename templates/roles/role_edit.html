@@ -15,40 +15,34 @@
        width: 100%;
        height: 60px;
    }
+   .error_list{
+    list-style-type: none;
+   }
+   ul li{
+    list-style: none;
+    color: red;
+    list-style-position:outside;
+   }
 </style>
-
-<form method="post" class="mt-4">
-    <!-- Form -->
+{% include 'includes/alertifyjs.html' %}
+<form method="post">
     {% csrf_token %}
     <div class="form-group mb-4">
-        <label for="role_name">{{ form.role_name.label_tag }}</label>
-        <div class="input-group">
-            {{ form.role_name }}
-        </div>
+        <p> {{ form.role_name.errors }}</p>
+        <label for="role_name">{{ form.role_name.label }}</label>
+        {{ form.role_name }}
     </div>
-
-    <!-- End of Form -->
-    <div class="form-group">
-        <!-- Form -->
-        <div class="form-group mb-4">
-            <label for="password">Your Password</label>
-            <div class="input-group">
-                {{ form.descriptions }}
-            </div>
-        </div>
-        <!-- End of Form -->
-        <!-- Form -->
-        <div class="form-group mb-4">
-            <div class="input-group d-flex align-items-center">
-                <small class="form-text text-muted me-2 mb-3">Select the appropriate role.</small>
-                <span style="width: 20px;">{{ form.isRole }}</span>
-            </div>
-        </div>
-
+    <div class="form-group mb-4">
+        <p> {{ form.descriptions.errors }}</p>
+        <label for="descriptions">{{ form.descriptions.label }}</label>
+        {{ form.descriptions }}
     </div>
-    <div class="d-grid">
-        <button type="submit" class="btn btn-gray-800">Sign In</button>
+    <div class="form-group mb-4">
+        <label for="isRole">{{ form.isRole.label }}</label>
+        {{ form.isRole }}
+        
     </div>
+    <button type="submit" class="btn btn-gray-800">update</button>
 </form>
 
 

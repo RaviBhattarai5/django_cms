@@ -1,16 +1,15 @@
-from django.shortcuts import render, redirect
+
 # 
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
 from django.views import View
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, DeleteView, ListView
 from django.views.generic.edit import UpdateView
 from .models import Roles
-
-from django.views import View
-from django.shortcuts import render, redirect
-from .models import Roles
 from .forms import RolesForm
 from django.core.paginator import Paginator
+from django.contrib import messages
+
 class RolesView(View):
     template_name = 'roles/roles.html'
 
@@ -18,13 +17,14 @@ class RolesView(View):
         roles = Roles.objects.all()  
         form = RolesForm() 
        
-
-        paginator = Paginator(roles, 5)
+        a=roles
+        template_name=self.template_name
+        paginator = Paginator(a, 5)
         page_number = request.GET.get('page')
         servicedatafinal = paginator.get_page(page_number)
         totalpage = servicedatafinal.paginator.num_pages
         
-        return render(request, self.template_name, {
+        return render(request, template_name, {
             'roles': servicedatafinal, 
             'form': form, 
             'lastpage': totalpage,
@@ -36,9 +36,12 @@ class RolesView(View):
         form = RolesForm(request.POST)  
         if form.is_valid():
             form.save()  
+            messages.success(request, "Role Create successfully! ")
             return redirect('roles') 
+        
         roles = Roles.objects.all() 
         return render(request, self.template_name, {'data': roles, 'form': form})
+    
 
     
    
@@ -47,8 +50,19 @@ class RolesDeleteView(DeleteView):
     template_name = 'roles/role_delete.html'
     success_url = reverse_lazy('roles')
 
+    def form_valid(self, form):
+        messages.success(self.request, "Delete successfully!")
+        return super().form_valid(form)
+
 class RolesUpdateView(UpdateView):
     model = Roles
-    fields = ['role_name', 'descriptions', 'isRole']
+    form_class = RolesForm
     template_name = 'roles/role_edit.html'
     success_url = reverse_lazy('roles')
+
+    def form_valid(self, form):
+        if self.request.method == 'POST':
+            print("Data is being posted.")
+        return super().form_valid(form)
+
+
