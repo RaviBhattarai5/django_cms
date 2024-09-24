@@ -13,16 +13,7 @@
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
         <label class="my-1 me-2" for="parent">Parent</label>
-        <select
-          class="form-select"
-          id="parent"
-          aria-label="Default select example"
-        >
-          <option selected="">Select Parent</option>
-          {% for parent in parents %}
-          <option value="{{parent.id}}">{{parent.title}}</option>
-          {% endfor %}
-        </select>
+        {{form.parent}}
       </div>
     </div>
     <div class="col-lg-4 col-sm-6">

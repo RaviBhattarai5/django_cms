@@ -21,7 +21,11 @@
     </li>
     {%else%}
     <li class="breadcrumb-item {% if forloop.last %} active {% endif %}">
+      {%if breadcrumb.url%}
       <a href="{%url breadcrumb.url%}"> {{ breadcrumb.name }} </a>
+      {%else%}
+      <a href="#"> {{ breadcrumb.name }} </a>
+      {%endif%}
     </li>
     {%endif%} {% endfor %} {%else%}
     <li class="breadcrumb-item active">

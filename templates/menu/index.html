@@ -54,7 +54,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for menu in items %}
+      {% for menu in menus %}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
         <td>{{ menu.title }}</td>
@@ -73,7 +73,7 @@
           ></a>
           <button
             type="button"
-            onclick="confirmDelete('/items/{{menu.id}}/delete/')"
+            onclick="confirmDelete('/menus/{{menu.id}}/delete/')"
             class="btn btn-sm btn-gray-800"
           >
             <i class="fa fa-times"></i>

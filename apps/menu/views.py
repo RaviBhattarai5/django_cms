@@ -9,7 +9,7 @@ from utils.common import arrange_pagination
 class MenuListView(ListView):
     model = Menu
     template_name = 'menu/index.html'
-    context_object_name = 'items'
+    context_object_name = 'menus'
     paginate_by = 50
     
     def get_queryset(self):
@@ -45,7 +45,6 @@ class MenuCreateView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['parents'] = Menu.objects.all()
         context['page_title'] = 'Create Menu'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'menu_list'},{'name':'Create Menu', 'url':'menu_create'}]
         return context
@@ -58,6 +57,12 @@ class MenuUpdateView(UpdateView):
     def form_valid(self, form):
         messages.success(self.request, 'Updated Successfully')
         return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Create Menu'
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'menu_list'},{'name':'Update Menu'}]
+        return context
     
 class MenuDeleteView(DeleteView):
     model = Menu
