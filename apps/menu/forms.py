@@ -13,17 +13,3 @@ class MenuForm(forms.ModelForm):
             'position': forms.NumberInput(attrs={'class': 'form-control', 'id': 'position'}),
             'publish' : forms.CheckboxInput(attrs={'class':'form-check-input', 'id': 'publish'}) 
             }
-    
-    # Form Validation
-    # def clean(self):
-    #     cleaned_data = super(MenuForm, self).clean()
-    #     title = cleaned_data.get('title')
-    #     position = cleaned_data.get('position')
-
-    #     if title is None or title.strip() == '':
-    #         raise ValidationError({'title': 'Title is required'})
-
-    #     if position is None:
-    #         raise ValidationError({'position': 'Position is required'})
-
-    #     return cleaned_data

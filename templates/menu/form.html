@@ -1,19 +1,13 @@
-{% extends "layouts/base.html" %}
+{% extends "layouts/base.html" %} {%load static%}
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %} {% endblock stylesheets %}
 
 <!-- Page Content  -->
-{% block content %}
-{%for message in messages%}
-{{message}}
-{%endfor%}
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
 <form method="post">
-  {% csrf_token %}
-    {% if form.non_field_errors %}
-        <div class="alert alert-danger">
-            {{ form.non_field_errors }}
-        </div>
-    {% endif %}
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
 
   <div class="row mb-4">
     <div class="col-lg-4 col-sm-6">
@@ -24,56 +18,50 @@
           id="parent"
           aria-label="Default select example"
         >
+          <option selected="">Select Parent</option>
           {% for parent in parents %}
           <option value="{{parent.id}}">{{parent.title}}</option>
-         {% empty %}
-          <option selected="">Select Parent</option>
-          <option value="1">asd</option>
-         {% endfor %}
+          {% endfor %}
         </select>
       </div>
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
         <label for="title">Title <span class="text-danger">*</span></label>
-        {{form.title}}
-        {% if form.title.errors %}
-            <div class="invalid-feedback">
-                {{ form.title.errors.as_text }}
-            </div>
+        {{form.title}} {% if form.title.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.title.errors.as_text }}
+        </div>
         {% endif %}
       </div>
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
         <label for="url">URL</label>
-        {{form.url}}
-        {% if form.url.errors %}
-            <div class="invalid-feedback">
-                {{ form.url.errors.as_text }}
-            </div>
+        {{form.url}} {% if form.url.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.url.errors.as_text }}
+        </div>
         {% endif %}
       </div>
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
         <label for="icon">Icon</label>
-        {{form.icon}}
-        {% if form.icon.errors %}
-            <div class="invalid-feedback">
-                {{ form.icon.errors.as_text }}
-            </div>
+        {{form.icon}} {% if form.icon.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.icon.errors.as_text }}
+        </div>
         {% endif %}
       </div>
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
         <label for="position">Position<span class="text-danger">*</span></label>
-        {{form.position}}
-        {% if form.position.errors %}
-            <div class="invalid-feedback">
-                {{ form.position.errors.as_text }}
-            </div>
+        {{form.position}} {% if form.position.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.position.errors.as_text }}
+        </div>
         {% endif %}
       </div>
     </div>
@@ -81,19 +69,18 @@
       <div class="mb-4">
         <div class="form-check">
           <label class="form-check-label" for="publish"> Publish </label>
-        {{form.publish}}
+          {{form.publish}}
         </div>
       </div>
     </div>
   </div>
   <div class="mb-4">
     <button class="btn btn-sm btn-primary" type="submit">Save</button>
-    <a class="btn btn-sm btn-gray-200" href="javascript:history.back()"
-      >Cancle</a
-    >
+    <a class="btn btn-sm btn-gray-200" href="{%url 'menu_list'%}">Cancle</a>
   </div>
 </form>
-  {% endblock content %}
-  <!-- Specific Page JS goes HERE  -->
-  {% block javascripts %}{% endblock javascripts %}
-</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}
