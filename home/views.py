@@ -10,12 +10,9 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'layouts/base.html',{'page_title':'Dashboard'})
 
-# def register(request):
-#     return render(request, 'registration/register.html')
-
-
 def register(request):
     if request.method=='POST':
+        username=request.POST['username']
         email=request.POST['email']
         password=request.POST['password']
         confirm_password=request.POST['confirm_password']
@@ -23,11 +20,11 @@ def register(request):
         try:
             validate_password(password)
             if password==confirm_password:
-                if User.objects.filter(username=email).exists():
+                if User.objects.filter(email=email).exists():
                     messages.info(request, 'Email is already exists !!')
                     return redirect('register')
                 else:
-                    User.objects.create_user(username=email, password=password)
+                    User.objects.create_user(username=username, email=email, password=password)
                     messages.success(request, "Register Successfully !")
                     return redirect('login')
             else:
@@ -42,23 +39,26 @@ def register(request):
 
 
 def log_in(request):
-    if request.method=="POST":
-        username=request.POST['email']
-        password=request.POST['password']
-        if not username or not password:
-            messages.error(request, 'All fields are required.')
-            return redirect('login')
+    if request.method == 'POST':
+        username_or_email = request.POST.get('username_or_email')
+        password = request.POST.get('password')
 
-        if not User.objects.filter(username=username).exists():
-            messages.info(request, 'User is not register yet !!')
-            return redirect('login')
-        user=authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('dashboard')
-        else:
-            messages.error(request, 'invalid keyword !!')
-            return redirect('login')
+        try:
+            # Check if the input is an email or username
+            if '@' in username_or_email:
+                user = User.objects.get(email=username_or_email)
+            else:
+                user = User.objects.get(username=username_or_email)
+
+            # Authenticate user
+            user = authenticate(username=user.username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('dashboard')  # Redirect to your desired page
+            else:
+                messages.error(request, 'Invalid credentials')
+        except User.DoesNotExist:
+            messages.error(request, 'User does not exist')
     return render(request, 'registration/login.html')
 
 def log_out(request):
