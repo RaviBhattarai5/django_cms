@@ -8,6 +8,38 @@
 {% include 'includes/index/action.html' %} {%endblock index_action%}
 <!-- Page Content  -->
 {% block content %}
+<div class="table-settings mb-4">
+  <div class="row align-items-center justify-content-between">
+    <div class="col col-md-6 col-lg-3 col-xl-4">
+      <form method="GET" action="">
+        <div class="input-group me-2 me-lg-3 fmxw-400">
+          <span class="input-group-text" id="basic-addon1"
+            ><svg
+              class="icon icon-xs text-gray-600"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"
+              ></path>
+            </svg> </span
+          ><input
+            type="search"
+            name="title"
+            value="{{ request.GET.title }}"
+            class="form-control"
+            id="exampleInputIconLeft"
+            placeholder="Search Menu"
+            aria-label="Search"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <div class="border-0 shadow table-wrapper table-responsive">
   <table class="table table-hover">
     <thead>

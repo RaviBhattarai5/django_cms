@@ -9,10 +9,13 @@ class MenuListView(ListView):
     model = Menu
     template_name = 'menu/index.html'
     context_object_name = 'menus'
-    paginate_by = 10
+    paginate_by = 50
     
     def get_queryset(self):
         queryset = Menu.objects.select_related('parent').all()
+        title = self.request.GET.get('title')
+        if title:
+            queryset = queryset.filter(title__icontains=title) 
         return queryset
     
     def get_context_data(self, **kwargs):
