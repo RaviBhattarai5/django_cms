@@ -4,6 +4,5 @@ urlpatterns = [
     path('', views.RolesView.as_view(), name='roles'),
     path('edit/<int:pk>/', views.RolesUpdateView.as_view(), name="edit"),
     path('delete/<int:pk>/', views.RolesDeleteView.as_view(), name="delete"),
-
     path('update/<int:pk>/', views.RolesView.as_view(), name='update')
 ]

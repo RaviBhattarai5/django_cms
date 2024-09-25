@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.forms import PasswordChangeForm
 
 def home(request):
     return render(request, 'layouts/base.html',{'page_title':'Dashboard'})
@@ -66,3 +66,16 @@ def log_out(request):
     return redirect('login')
 
 
+def password_change(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    user_form=PasswordChangeForm(user=request.user)
+    if request.method=="POST":
+        user_form=PasswordChangeForm(user=request.user, data=request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect('login')
+    context={
+        'user_form':user_form
+    }
+    return render(request, 'registration/password_change.html', context)

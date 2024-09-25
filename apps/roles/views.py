@@ -7,26 +7,20 @@ from .models import Roles
 from .forms import RolesForm
 from django.core.paginator import Paginator
 from django.contrib import messages
-
+from utils.paginator import get_paginated_queryset
 class RolesView(View):
     template_name = 'roles/roles.html'
 
     def get(self, request):
-        roles = Roles.objects.all()  
+        roles = Roles.objects.all() 
         form = RolesForm() 
        
-        a=roles
-        template_name=self.template_name
-        paginator = Paginator(a, 5)
-        page_number = request.GET.get('page')
-        servicedatafinal = paginator.get_page(page_number)
-        totalpage = servicedatafinal.paginator.num_pages
-        
-        return render(request, template_name, {
-            'roles': servicedatafinal, 
+        page_obj, page_range = get_paginated_queryset(roles, request, per_page=2)
+
+        return render(request, self.template_name, {
+            'page_obj': page_obj, 
             'form': form, 
-            'lastpage': totalpage,
-            'totalPagelist': [n+1 for n in range(totalpage)],
+            'page_range': page_range,
         })
 
 
