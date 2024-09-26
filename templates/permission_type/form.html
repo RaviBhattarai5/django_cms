@@ -12,46 +12,10 @@
   <div class="row mb-4">
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label class="my-1 me-2" for="parent">Parent</label>
-        {{form.parent}}
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="title">Title <span class="text-danger">*</span></label>
-        {{form.title}} {% if form.title.errors %}
+        <label for="name">name <span class="text-danger">*</span></label>
+        {{form.name}} {% if form.name.errors %}
         <div class="invalid-feedback" style="display: block !important">
-          {{ form.title.errors.as_text }}
-        </div>
-        {% endif %}
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="url">URL</label>
-        {{form.url}} {% if form.url.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.url.errors.as_text }}
-        </div>
-        {% endif %}
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="icon">Icon</label>
-        {{form.icon}} {% if form.icon.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.icon.errors.as_text }}
-        </div>
-        {% endif %}
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="position">Position<span class="text-danger">*</span></label>
-        {{form.position}} {% if form.position.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.position.errors.as_text }}
+          {{ form.name.errors.as_text }}
         </div>
         {% endif %}
       </div>
@@ -60,14 +24,16 @@
       <div class="mb-4">
         <div class="form-check">
           <label class="form-check-label" for="publish"> Publish </label>
-          {{form.publish}}
+          {{form.is_active}}
         </div>
       </div>
     </div>
   </div>
   <div class="mb-4">
     <button class="btn btn-sm btn-primary" type="submit">Save</button>
-    <a class="btn btn-sm btn-gray-200" href="{%url 'menu_list'%}">Cancle</a>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'permission_type_list'%}"
+      >Cancle</a
+    >
   </div>
 </form>
 {% endblock content %}

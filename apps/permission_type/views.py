@@ -35,7 +35,7 @@ class PermissionTypeCreateView(CreateView):
     model = PermissionType
     form_class = PermissionTypeForm
     template_name = 'permission_type/form.html'
-    success_url = reverse_lazy('permission_type_success')
+    success_url = reverse_lazy('permission_type_list')
     
     def form_valid(self, form):
         messages.success(self.request, 'Created Successfully')
@@ -52,7 +52,7 @@ class PermissionTypeUpdateView(UpdateView):
     model = PermissionType
     form_class = PermissionTypeForm
     template_name = 'permission_type/form.html'
-    success_url = reverse_lazy('permission_type_success')
+    success_url = reverse_lazy('permission_type_list')
     def form_valid(self, form):
         messages.success(self.request, 'Updated Successfully')
         return super().form_valid(form)
