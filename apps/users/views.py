@@ -39,14 +39,21 @@ class UserCreateView(CreateView):
     success_url = reverse_lazy('user_list')
     
     def form_valid(self, form):
+        user = form.save(commit=False)
+        user.set_password(form.cleaned_data['password'])  # Hash the password
+        user.is_active = True  # Ensure the user is active
+        user.save()
         messages.success(self.request, 'Created Successfully')
         return super().form_valid(form)
-    
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Create User'
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'User', 'url':'user_list'},{'name':'Create User', 'url':'user_create'}]
+        context['breadcrumbs'] = [
+            {'name': 'Dashboard', 'url': 'dashboard'},
+            {'name': 'User', 'url': 'user_list'},
+            {'name': 'Create User', 'url': 'user_create'}
+        ]
         return context
     
 class UserUpdateView(UpdateView):
