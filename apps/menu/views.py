@@ -13,7 +13,7 @@ class MenuListView(ListView):
     paginate_by = 50
     
     def get_queryset(self):
-        queryset = Menu.objects.select_related('parent').all()
+        queryset = Menu.objects.select_related('parent').all().order_by('id')
         title = self.request.GET.get('title')
         if title:
             queryset = queryset.filter(title__icontains=title) 

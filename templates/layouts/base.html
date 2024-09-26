@@ -48,8 +48,6 @@
       </div>
 
       {% include 'includes/footer.html' %}
-      <!-- Javascripts -->
-      {% block javascripts %}{% endblock javascripts %}
     </main>
 
     <!-- Core -->
@@ -92,5 +90,13 @@
 
     <!-- Volt JS -->
     <script src="{%static 'assets/js/volt.js'%}"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".js-example-basic-multiple").select2();
+      });
+    </script>
+    <!-- Javascripts -->
+    {% block javascripts %}{% endblock javascripts %}
   </body>
 </html>

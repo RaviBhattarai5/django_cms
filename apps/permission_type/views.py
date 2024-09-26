@@ -12,7 +12,7 @@ class PermissionTypeListView(ListView):
     paginate_by = 50
     
     def get_queryset(self):
-        queryset = PermissionType.objects.all()
+        queryset = PermissionType.objects.all().order_by('id')
         name = self.request.GET.get('name')
         if name:
             queryset = queryset.filter(name__icontains=name) 
