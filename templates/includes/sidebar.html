@@ -81,6 +81,8 @@
         </a>
       </li>
       <!-- ! -->
+      {% comment %}
+
       {% for item in menu_hierarchy %}
       <!--nav url-->
       {%url item.menu.url as menu_url%}
@@ -222,6 +224,8 @@
         <!--grandchildren-->
       </li>
       {% endfor %}
+      {% endcomment %}
+
       <!-- ! -->
     </ul>
   </div>
