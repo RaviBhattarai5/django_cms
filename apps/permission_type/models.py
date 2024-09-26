@@ -6,6 +6,3 @@ class PermissionType(models.Model):
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        app_label = 'permission_type'
