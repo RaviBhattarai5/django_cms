@@ -1,4 +1,5 @@
 from django import template
+from permissions.permissions import has_permission
 
 register = template.Library()
 
@@ -9,3 +10,8 @@ def add_class(field, css_class):
 @register.filter
 def get_field(form, field_name):
     return form[field_name]
+
+@register.simple_tag
+def check_permission(context, menu, permission_type):
+    user = context['request'].user
+    return has_permission(user, menu, permission_type)
