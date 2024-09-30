@@ -2,11 +2,12 @@ from django.core.cache import cache
 from django.contrib.auth.models import User
 from collections import defaultdict
 from apps.set_permission.models import SetPermission
+from apps.users.models import UserRole
 
 def has_permission(user: User, menu, permission_type):
     cache_key = 'role_menu_permissions'
     role_permissions = cache.get(cache_key)
-    roles = user.role_set.all()
+    roles = UserRole.objects.filter(user_id=user.id).values_list('role_id', flat=True)
     
     if user.is_superuser:
         return True
