@@ -5,6 +5,7 @@ from .models import Menu
 from .forms import MenuForm
 from django.contrib import messages
 from utils.common import arrange_pagination
+from permissions.permissions import has_permission
 
 class MenuListView(ListView):
     model = Menu
@@ -24,6 +25,7 @@ class MenuListView(ListView):
         context['page_title'] = 'Menu'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'menu_list'}]
         context['new_url'] = 'menu_create'
+        context['can_add'] = has_permission(self.request.user, 'menu', 'Create')
         
         context = arrange_pagination(context)
         return context
