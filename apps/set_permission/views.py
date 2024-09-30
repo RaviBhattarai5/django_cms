@@ -5,10 +5,12 @@ from apps.menu.models import Menu
 from apps.permission_type.models import PermissionType
 from .models import SetPermission
 from django.contrib import messages
+from django.core.cache import cache
 
 def set_permission_view(request):
     selected_role = None
     if request.method == "POST":
+        cache.delete('role_menu_permissions')
         form = SetPermissionForm(request.POST)
         selected_role_id  = request.GET.get('role_id')
         SetPermission.objects.filter(role=selected_role_id ).delete()
