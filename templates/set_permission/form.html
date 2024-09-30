@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %} {%load static%} {%load form_tags%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<div class="row mb-4">
+  <form method="get">
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="role">Role <span class="text-danger">*</span></label>
+        <select name="role_id" class="form-select" onchange="this.form.submit()">
+            <option value="">--- Select a Role ---</option>
+            {% for role in form.fields.role.queryset %}
+                <option value="{{ role.id }}" {% if selected_role and selected_role.id == role.id %}selected{% endif %}>
+                    {{ role.role_name }}
+                </option>
+            {% endfor %}
+        </select>
+        {% if form.name.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.role.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </form>
+</div>
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="border-0 shadow table-wrapper table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Menu</th>
+              {% for permission_type in permission_types %}
+              <th>{{ permission_type.name }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for menu in menus %}
+            <tr>
+              <td>{{ menu.title }}</td>
+              {% for permission_type in permission_types %}
+              <td>
+                {% with menu_id=menu.id|stringformat:"s" permission_id=permission_type.id|stringformat:"s" %}
+                    {% with field_name=menu_id|add:"_"|add:permission_id %}
+                        {{ form|get_field:field_name|add_class:'form-check-input' }}
+                    {% endwith %}
+                {% endwith %}
+              </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <input type="hidden" name="role" value="{{ selected_role.id }}">
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'permission_type_list'%}"
+      >Cancle</a>
+  </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'apps.roles',
     'apps.permission_type',
     'apps.users',
+    'apps.set_permission',
 ]
 
 MIDDLEWARE = [

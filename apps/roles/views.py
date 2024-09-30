@@ -15,7 +15,7 @@ class RolesView(View):
         roles = Roles.objects.all() 
         form = RolesForm() 
        
-        page_obj, page_range = get_paginated_queryset(roles, request, per_page=2)
+        page_obj, page_range = get_paginated_queryset(roles, request, per_page=10)
 
         return render(request, self.template_name, {
             'page_obj': page_obj, 
