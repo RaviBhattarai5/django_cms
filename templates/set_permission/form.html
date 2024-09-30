@@ -3,7 +3,7 @@
 {% block stylesheets %} {% endblock stylesheets %}
 
 <!-- Page Content  -->
-{% block content %} {%for message in messages%} {{message}} {%endfor%}
+{% block content %}
 <div class="row mb-4">
   <form method="get">
     <div class="col-lg-4 col-sm-6">
@@ -46,12 +46,14 @@
           <tbody>
             {% for menu in menus %}
             <tr>
-              <td>{{ menu.title }}</td>
+              <td>
+                <input type="checkbox" class="form-check-input master" />
+                {{ menu.title }}</td>
               {% for permission_type in permission_types %}
               <td>
                 {% with menu_id=menu.id|stringformat:"s" permission_id=permission_type.id|stringformat:"s" %}
                     {% with field_name=menu_id|add:"_"|add:permission_id %}
-                        {{ form|get_field:field_name|add_class:'form-check-input' }}
+                        {{ form|get_field:field_name|add_class:'form-check-input child' }}
                     {% endwith %}
                 {% endwith %}
               </td>
@@ -74,4 +76,30 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 <script src="{%static 'assets/js/form-error.js'%}"></script>
+<script>
+  $(document).ready(function() {
+    $('.master').each(function() {
+      if ($(this).closest('tr').find('.child').length == $(this).closest('tr').find('.child:checked').length) {
+        $(this).prop('checked', true);
+      }
+    });
+
+    $('.child').click(function() {
+      var allChecked = true;
+      $(this).closest('tr').find('.child').each(function() {
+        if (!$(this).prop('checked')) {
+          allChecked = false;
+        }
+      });
+      $(this).closest('tr').find('.master').prop('checked', allChecked);
+    });
+
+    $('.master').click(function() {
+      $(this).closest('tr').find('.child').prop('checked', $(this).prop("checked"));
+      if ($(this).closest('tr').find('.child').length == $(this).closest('tr').find('.child:checked').length) {
+        $(this).prop('checked', true);
+      }
+    });
+  });
+</script>
 {% endblock javascripts %}
