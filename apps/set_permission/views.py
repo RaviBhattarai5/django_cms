@@ -41,6 +41,8 @@ def set_permission_view(request):
         else:
             form = SetPermissionForm()
     return render(request, 'set_permission/form.html', {
+        'page_title': "Set Permission",
+        'breadcrumbs': [{'name':'Dashboard', 'url':'dashboard'},{'name':'Set Permission', 'url':''}],
         'form': form,
         'fields': form.fields,
         'menus': Menu.objects.all(),
