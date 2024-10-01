@@ -9,7 +9,7 @@ def permission_required(menu_slug, permission_type):
         def _wrapped_view(view, *args, **kwargs):
             request = view.request
             if request.user.is_superuser:
-                return view_func(request, *args, **kwargs)
+                return view_func(view, *args, **kwargs)
             
             if has_permission(request.user, menu_slug, permission_type):
                 return view_func(view, *args, **kwargs)
