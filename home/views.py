@@ -79,3 +79,7 @@ def password_change(request):
         'user_form':user_form
     }
     return render(request, 'registration/password_change.html', context)
+
+def error_403(request):
+    return render(request, '403.html')
+    
