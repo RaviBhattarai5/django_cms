@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.http import HttpResponseForbidden
 from functools import wraps
 from permissions.permissions import has_permission
@@ -14,7 +15,7 @@ def permission_required(menu_slug, permission_type):
             if has_permission(request.user, menu_slug, permission_type):
                 return view_func(view, *args, **kwargs)
             else:
-                return HttpResponseForbidden("You do not have permission to access this page.")
+                return redirect("403")
         
         return _wrapped_view
 

@@ -47,7 +47,7 @@ def set_permission_view(request):
         'breadcrumbs': [{'name':'Dashboard', 'url':'dashboard'},{'name':'Set Permission', 'url':''}],
         'form': form,
         'fields': form.fields,
-        'menus': Menu.objects.all(),
+        'menus': Menu.objects.all().order_by('id', 'position'),
         'permission_types': PermissionType.objects.all(),
         'selected_role': selected_role
     })
