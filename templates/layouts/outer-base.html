@@ -7,7 +7,10 @@
   </head>
 
   <body>
-    {% block content %}{% endblock content %}
+{% include 'includes/alertifyjs.html' %}
+
+    {% block content %} {% include 'includes/alertifyjs.html' %}{% endblock content %}
+
 
     <!-- Specific Page JS goes HERE  -->
     {% block javascripts %}{% endblock javascripts %}
