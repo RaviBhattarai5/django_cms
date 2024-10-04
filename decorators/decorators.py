@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.http import HttpResponseForbidden
 from functools import wraps
-from permissions.permissions import has_permission
+from utils.permissions import has_permission
 
 def permission_required(menu_slug, permission_type):
 

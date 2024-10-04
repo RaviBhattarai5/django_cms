@@ -1,5 +1,5 @@
 from django import template
-from permissions.permissions import has_permission
+from utils.permissions import has_permission
 
 register = template.Library()
 

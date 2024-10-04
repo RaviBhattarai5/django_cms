@@ -1,6 +1,6 @@
-from apps.menu.models import Menu
-from apps.users.models import UserRole
-from apps.permission_type.models import PermissionType
+from apps.administrator.menu.models import Menu
+from apps.administrator.users.models import UserRole
+from apps.administrator.permission_type.models import PermissionType
 
 def menu_context(request):
     if not request.user.is_authenticated:
