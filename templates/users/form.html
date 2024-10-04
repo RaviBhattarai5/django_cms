@@ -22,9 +22,7 @@
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label for="first_name"
-          >First Name <span class="text-danger">*</span></label
-        >
+        <label for="first_name">First Name <span class="text-danger">*</span></label>
         {{form.first_name}} {% if form.first_name.errors %}
         <div class="invalid-feedback" style="display: block !important">
           {{ form.first_name.errors.as_text }}
@@ -34,9 +32,7 @@
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label for="last_name"
-          >Last Name <span class="text-danger">*</span></label
-        >
+        <label for="last_name">Last Name <span class="text-danger">*</span></label>
         {{form.last_name}} {% if form.last_name.errors %}
         <div class="invalid-feedback" style="display: block !important">
           {{ form.last_name.errors.as_text }}
@@ -46,9 +42,7 @@
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label for="username"
-          >Username <span class="text-danger">*</span></label
-        >
+        <label for="username">Username <span class="text-danger">*</span></label>
         {{form.username}} {% if form.username.errors %}
         <div class="invalid-feedback" style="display: block !important">
           {{ form.username.errors.as_text }}
@@ -68,10 +62,8 @@
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label for="password"
-          >Password {%if not is_update%}<span class="text-danger">*</span>
-          {%endif%}</label
-        >
+        <label for="password">Password {%if not is_update%}<span class="text-danger">*</span>
+          {%endif%}</label>
         {{form.password}} {% if form.password.errors %}
         <div class="invalid-feedback" style="display: block !important">
           {{ form.password.errors.as_text }}

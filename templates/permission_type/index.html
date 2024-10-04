@@ -57,18 +57,24 @@
         <td>{{ permission_type.name }}</td>
         <td>{{ permission_type.is_active }}</td>
         <td>
+          {% if can_edit %}
           <a
             href="{% url 'permission_type_update' permission_type.id %}"
             class="btn btn-sm btn-gray-800"
             ><i class="fa fa-pencil-square"></i
           ></a>
+          {% endif %}
+
+          {% if can_delete %}
           <button
             type="button"
             onclick="confirmDelete('/permission_type/{{permission_type.id}}/delete/')"
-            class="btn btn-sm btn-gray-800"
+            class="btn btn-sm btn-gray-800 "
           >
             <i class="fa fa-times"></i>
           </button>
+
+          {% endif %}
         </td>
       </tr>
       {% empty %}
