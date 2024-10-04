@@ -44,7 +44,7 @@ def set_permission_view(request):
             else:
                 form = SetPermissionForm()
     except:
-        messages.warning(request, "An error occurred while processing the permissions. Please try again or verify the selected role and data.")
+        messages.error(request, "An error occurred while processing the permissions. Please try again or verify the selected role and data.")
     return render(request, 'set_permission/form.html', {
         'form': form,
         'fields': form.fields,
