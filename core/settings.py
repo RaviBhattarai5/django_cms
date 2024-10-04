@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.permission_type',
     'apps.users',
     'apps.set_permission',
+    'apps.master.master_action_taken',
 ]
 
 MIDDLEWARE = [
