@@ -66,11 +66,14 @@
         <td>{{ menu.position }}</td>
         <td>{{ menu.publish }}</td>
         <td>
+          <!--chek edit-->
+          {% if can_edit %}
           <a
             href="{% url 'menu_update' menu.id %}"
             class="btn btn-sm btn-gray-800"
             ><i class="fa fa-pencil-square"></i
           ></a>
+          {%endif%} {% if can_delete %}
           <button
             type="button"
             onclick="confirmDelete('/menus/{{menu.id}}/delete/')"
@@ -78,6 +81,7 @@
           >
             <i class="fa fa-times"></i>
           </button>
+          {%endif%}
         </td>
       </tr>
       {% empty %}

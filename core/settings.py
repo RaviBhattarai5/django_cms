@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -15,7 +16,11 @@ SECRET_KEY = 'django-insecure-o2k@76@!ajzbfy^7-86y7zl91_&_(f$f3=@=u*s%zbzv8=$it2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+SESSION_COOKIE_AGE = 86400
+SESSION_EXPIRE_SECONDS = 86400
+SESSION_TIMEOUT_REDIRECT = 'login/'
 
 
 # Application definition
@@ -30,11 +35,15 @@ INSTALLED_APPS = [
     'home',
     'apps.menu',
     'apps.roles',
+    'apps.permission_type',
+    'apps.users',
+    'apps.set_permission',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,7 +83,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "django_cms",
         "USER": "postgres",
-        "PASSWORD": "postgres",
+        "PASSWORD": "Suresh@12",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
@@ -129,3 +138,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/dashboard/"
 LOGOUT_REDIRECT_URL = '/login/'
+
+# Caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-suffix',
+    }
+}
