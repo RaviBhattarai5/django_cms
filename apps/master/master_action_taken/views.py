@@ -39,7 +39,7 @@ class MasterActionTakenListView(ListView):
         context["page_title"] = "MasterActionTaken"
         context["breadcrumbs"] = [
             {"name": "Dashboard", "url": "dashboard"},
-            {"name": "MasterActionTaken", "url": "master_action_taken_list"},
+            {"name": "Master Action Taken", "url": "master_action_taken_list"},
         ]
         context["new_url"] = "master_action_taken_create"
         context["can_add"] = has_permission(self.request.user, "menu", "Create")
@@ -78,7 +78,7 @@ class MasterActionTakenCreateView(CreateView):
         context["page_title"] = "Create Master Action Taken"
         context["breadcrumbs"] = [
             {"name": "Dashboard", "url": "dashboard"},
-            {"name": "MasterActionTaken", "url": "master_action_taken_list"},
+            {"name": "Master Action Taken", "url": "master_action_taken_list"},
             {"name": "Create Master Action Taken", "url": "master_action_taken_create"},
         ]
         return context
@@ -103,7 +103,7 @@ class MasterActionTakenUpdateView(UpdateView):
         context["page_title"] = "Update Master Action Taken"
         context["breadcrumbs"] = [
             {"name": "Dashboard", "url": "dashboard"},
-            {"name": "MasterActionTaken", "url": "master_action_taken_list"},
+            {"name": "Master Action Taken", "url": "master_action_taken_list"},
             {"name": "Update Master Action Taken"},
         ]
         return context
