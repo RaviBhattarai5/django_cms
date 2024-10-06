@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'apps.permission_type',
     'apps.users',
     'apps.set_permission',
-    'gsheets',
 ]
 
 MIDDLEWARE = [
