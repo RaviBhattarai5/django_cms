@@ -12,4 +12,4 @@ class MasterActionTaken(models.Model):
         db_table = "master_action_taken"
 
     def __str__(self):
-        return self.id
+        return self.title
