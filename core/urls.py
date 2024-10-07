@@ -15,5 +15,6 @@ urlpatterns = [
     path('master-country/', include('apps.master.country.urls')),
     path('master-state/', include('apps.master.state.urls')),
     path('master-branch/', include('apps.master.branch.urls')),
+    path('master-product-bin/', include('apps.master.product_bin.urls')),
     # path('', include('role.urls')),
 ] 
