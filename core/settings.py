@@ -43,6 +43,8 @@ EXTERNAL_APPS=[
     'apps.administrator.users',
     'apps.administrator.menu',
     'apps.administrator.permission_type',
+
+    'apps.master.master_action_taken'
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)

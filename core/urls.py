@@ -10,4 +10,7 @@ urlpatterns = [
     path('permission_type/', include('apps.administrator.permission_type.urls')),
     path('users/', include('apps.administrator.users.urls')),
     path('set-permission/', include('apps.administrator.set_permission.urls')),
+
+    path('master-action-taken/', include('apps.master.master_action_taken.urls')),
+    # path('', include('role.urls')),
 ] 
