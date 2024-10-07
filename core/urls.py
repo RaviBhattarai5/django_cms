@@ -15,5 +15,6 @@ urlpatterns = [
     path('department/', include('apps.master.department.urls')),
     path('enquiry-state/', include('apps.master.enquiry_state.urls')),
     path('observed-problem/', include('apps.master.observed_problem.urls')),
+    path('operation-performed/', include('apps.master.operation_performed.urls')),
     # path('', include('role.urls')),
 ] 

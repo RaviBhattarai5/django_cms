@@ -48,6 +48,7 @@ EXTERNAL_APPS=[
     'apps.master.department',
     'apps.master.enquiry_state',
     'apps.master.observed_problem',
+    'apps.master.operation_performed',
     
 ]
 
