@@ -13,5 +13,6 @@ urlpatterns = [
 
     path('master-action-taken/', include('apps.master.master_action_taken.urls')),
     path('department/', include('apps.master.department.urls')),
+    path('enquiry-state/', include('apps.master.enquiry_state.urls')),
     # path('', include('role.urls')),
 ] 
