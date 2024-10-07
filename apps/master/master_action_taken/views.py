@@ -36,7 +36,7 @@ class MasterActionTakenListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["page_title"] = "MasterActionTaken"
+        context["page_title"] = "Master Action Taken"
         context["breadcrumbs"] = [
             {"name": "Dashboard", "url": "dashboard"},
             {"name": "Master Action Taken", "url": "master_action_taken_list"},

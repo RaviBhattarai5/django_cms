@@ -36,7 +36,7 @@ class EnquiryStateListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["page_title"] = "EnquiryState"
+        context["page_title"] = "Enquiry State"
         context["breadcrumbs"] = [
             {"name": "Dashboard", "url": "dashboard"},
             {"name": "Enquiry State", "url": "enquiry_state_list"},
