@@ -14,5 +14,6 @@ urlpatterns = [
     path('master-action-taken/', include('apps.master.master_action_taken.urls')),
     path('master-country/', include('apps.master.country.urls')),
     path('master-state/', include('apps.master.state.urls')),
+    path('master-branch/', include('apps.master.branch.urls')),
     # path('', include('role.urls')),
 ] 

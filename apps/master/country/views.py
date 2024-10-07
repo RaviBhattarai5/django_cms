@@ -14,7 +14,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
-MENU_SLUG = "master-action-taken"
+MENU_SLUG = "master_country"
 
 
 class CountryListView(ListView):
