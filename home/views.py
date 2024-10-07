@@ -35,7 +35,7 @@ def register(request):
                 messages.error(request, error)
             return redirect('register')
         
-    return render(request, 'registration/register.html')
+    return render(request, 'administrator/registration/register.html')
 
 
 def log_in(request):
@@ -59,7 +59,7 @@ def log_in(request):
                 messages.error(request, 'Invalid credentials')
         except User.DoesNotExist:
             messages.error(request, 'User does not exist')
-    return render(request, 'registration/login.html')
+    return render(request, 'administrator/registration/login.html')
 
 def log_out(request):
     logout(request)

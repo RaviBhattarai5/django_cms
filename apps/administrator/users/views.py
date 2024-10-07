@@ -9,14 +9,14 @@ from .forms import UserForm
 from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
-
+_users_slug='users'
 class UserListView(ListView):
     model = User
     template_name = 'administrator/users/index.html'
     context_object_name = 'users'
     paginate_by = 50
   
-    @permission_required('users', 'Browse')
+    @permission_required(_users_slug, 'Browse')
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 
@@ -46,7 +46,7 @@ class UserDetailView(DetailView):
     model = User
     template_name = 'administrator/users/detail.html'
 
-    @permission_required('user', 'Browse')
+    @permission_required(_users_slug, 'Browse')
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 
@@ -57,7 +57,7 @@ class UserCreateView(CreateView):
     template_name = 'administrator/users/form.html'
     success_url = reverse_lazy('user_list')
 
-    @permission_required('users', 'Create')
+    @permission_required(_users_slug, 'Create')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
@@ -86,7 +86,7 @@ class UserUpdateView(UpdateView):
     template_name = 'administrator/users/form.html'
     success_url = reverse_lazy('user_list')
 
-    @permission_required('users', 'Edit')
+    @permission_required(_users_slug, 'Edit')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 

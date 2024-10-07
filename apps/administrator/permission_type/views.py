@@ -7,14 +7,14 @@ from django.contrib import messages
 from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
-
+_permissiontype_slug='permission-type'
 class PermissionTypeListView(ListView):
     model = PermissionType
     template_name = 'administrator/permission_type/index.html'
     context_object_name = 'permission_types'
     paginate_by = 50
     
-    @permission_required('permission-type', 'Browse')
+    @permission_required(_permissiontype_slug, 'Browse')
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
     
@@ -50,7 +50,7 @@ class PermissionTypeCreateView(CreateView):
     template_name = 'administrator/permission_type/form.html'
     success_url = reverse_lazy('permission_type_list')
     
-    @permission_required('permission-type', 'Create')
+    @permission_required(_permissiontype_slug, 'Create')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
@@ -70,7 +70,7 @@ class PermissionTypeUpdateView(UpdateView):
     template_name = 'administrator/permission_type/form.html'
     success_url = reverse_lazy('permission_type_list')
     
-    @permission_required('permission-type', 'Edit')
+    @permission_required(_permissiontype_slug, 'Edit')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
@@ -92,7 +92,7 @@ class PermissionTypeDeleteView(DeleteView):
     template_name = 'administrator/permission_type/confirm_delete.html'
     success_url = reverse_lazy('permission_type_list')
     
-    @permission_required('permission-type','Delete')
+    @permission_required(_permissiontype_slug,'Delete')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     

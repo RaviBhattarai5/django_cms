@@ -58,13 +58,13 @@ class RolesView(View):
             'can_delete': has_permission(request.user, 'role', 'Delete'),  # Permission to delete roles
         }
 
-   
+_role_slug='role'
 class RolesDeleteView(DeleteView):
     model = Roles
     template_name = 'administrator/roles/role_delete.html'
     success_url = reverse_lazy('roles')
 
-    @permission_required('role', 'Delete')
+    @permission_required(_role_slug, 'Delete')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
@@ -78,7 +78,7 @@ class RolesUpdateView(UpdateView):
     template_name = 'administrator/roles/role_edit.html'
     success_url = reverse_lazy('roles')
 
-    @permission_required('role','Edit')
+    @permission_required(_role_slug,'Edit')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 

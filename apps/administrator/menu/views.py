@@ -7,13 +7,14 @@ from django.contrib import messages
 from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
+_menu_slug='menu'
 class MenuListView(ListView):
     model = Menu
     template_name = 'administrator/menu/index.html'
     context_object_name = 'menus'
     paginate_by = 50
     
-    @permission_required('menu','Browse')
+    @permission_required(_menu_slug,'Browse')
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
     
@@ -40,7 +41,7 @@ class MenuDetailView(DetailView):
     model = Menu
     template_name = 'administrator/menu/detail.html'
     
-    @permission_required('menu','Browse')
+    @permission_required(_menu_slug,'Browse')
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
     
@@ -50,7 +51,7 @@ class MenuCreateView(CreateView):
     template_name = 'administrator/menu/form.html'
     success_url = reverse_lazy('menu_list')
     
-    @permission_required('menu','Create')
+    @permission_required(_menu_slug,'Create')
     def dispatch(self, *args, **kwargs):
         return super(MenuCreateView, self).dispatch(*args, **kwargs)
     
@@ -71,7 +72,7 @@ class MenuUpdateView(UpdateView):
     template_name = 'administrator/menu/form.html'
     success_url = reverse_lazy('menu_list')
     
-    @permission_required('menu','Edit')
+    @permission_required(_menu_slug,'Edit')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
@@ -90,7 +91,7 @@ class MenuDeleteView(DeleteView):
     template_name = 'menu/confirm_delete.html'
     success_url = reverse_lazy('menu_list')
     
-    @permission_required('menu','Delete')
+    @permission_required(_menu_slug,'Delete')
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
