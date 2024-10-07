@@ -17,5 +17,6 @@ urlpatterns = [
     path('observed-problem/', include('apps.master.observed_problem.urls')),
     path('operation-performed/', include('apps.master.operation_performed.urls')),
     path('planning-activity-category/', include('apps.master.planning_activity_category.urls')),
+    path('planning-activity/', include('apps.master.planning_activity.urls')),
     # path('', include('role.urls')),
 ] 

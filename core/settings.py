@@ -50,6 +50,7 @@ EXTERNAL_APPS=[
     'apps.master.observed_problem',
     'apps.master.operation_performed',
     'apps.master.planning_activity_category',
+    'apps.master.planning_activity',
     
 ]
 
