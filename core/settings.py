@@ -48,7 +48,8 @@ EXTERNAL_APPS=[
     'apps.master.country',
     'apps.master.state',
     'apps.master.branch',
-    'apps.master.product_bin'
+    'apps.master.product_bin',
+    'apps.master.product_category',
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)
