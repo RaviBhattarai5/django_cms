@@ -18,5 +18,12 @@ urlpatterns = [
     path('operation-performed/', include('apps.master.operation_performed.urls')),
     path('planning-activity-category/', include('apps.master.planning_activity_category.urls')),
     path('planning-activity/', include('apps.master.planning_activity.urls')),
-    # path('', include('role.urls')),
+    path('master-country/', include('apps.master.country.urls')),
+    path('master-state/', include('apps.master.state.urls')),
+    path('master-branch/', include('apps.master.branch.urls')),
+    path('master-product-bin/', include('apps.master.product_bin.urls')),
+    path('master-product-category/', include('apps.master.product_category.urls')),
+    path('master-product-group/', include('apps.master.product_group.urls')),
+    path('master-product/', include('apps.master.product.urls')),
+
 ] 

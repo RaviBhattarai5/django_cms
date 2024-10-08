@@ -22909,7 +22909,7 @@ textarea.form-control-lg {
 }
 
 .sidebar .multi-level .nav-link {
-    padding-left: 53px;
+    padding-left: 30px !important;
 }
 
 .sidebar .sidebar-text,
@@ -28757,3 +28757,9 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
     z-index: 9999;
 }
 /*# sourceMappingURL=volt.css.map */
+.sidebar-text {
+    max-width: 150px;
+    word-break: break-word;
+    white-space: normal;
+    font-size: 14px;
+  }

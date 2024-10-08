@@ -52,6 +52,14 @@ EXTERNAL_APPS=[
     'apps.master.planning_activity_category',
     'apps.master.planning_activity',
     
+    'apps.master.country',
+    'apps.master.state',
+    'apps.master.branch',
+    'apps.master.product_bin',
+    'apps.master.product_category',
+    'apps.master.product_group',
+    'apps.master.product',
+    'apps.master.group',
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)
