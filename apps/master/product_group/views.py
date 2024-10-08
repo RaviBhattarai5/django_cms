@@ -9,7 +9,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
-_ProductGroup_slug=''
+_ProductGroup_slug='master_product_group'
 class ProductGroupListView(ListView):
     model = ProductGroup
     template_name = 'master/product_group/index.html'

@@ -43,12 +43,20 @@ def set_permission_view(request):
                 form = SetPermissionForm(role=selected_role) 
             else:
                 form = SetPermissionForm()
+
+         # Fetch only top-level menus (those without a parent)
+        parent_menus = Menu.objects.filter(parent__isnull=True).order_by('position')
+        permission_types = PermissionType.objects.all()
+
     except:
         messages.error(request, "An error occurred while processing the permissions. Please try again or verify the selected role and data.")
     return render(request, 'administrator/set_permission/form.html', {
         'form': form,
         'fields': form.fields,
         'menus': Menu.objects.all().order_by('id', 'position'),
-        'permission_types': PermissionType.objects.all(),
-        'selected_role': selected_role
+        # 'permission_types': PermissionType.objects.all(),
+        'selected_role': selected_role,
+
+        'parent_menus': parent_menus,  # Passing only top-level menus
+        'permission_types': permission_types,
     })

@@ -9,7 +9,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
-_branch_slug='state_list'
+_branch_slug='master_branch'
 class BranchListView(ListView):
     model = MasterBranch
     template_name = 'master/branch/index.html'

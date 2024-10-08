@@ -8,7 +8,7 @@ from django.contrib import messages
 from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
-_ProductBin_slug='master_ProductBin'
+_ProductBin_slug='product_bin'
 class ProductBinListView(ListView):
     model = ProductBin
     template_name = 'master/product_bin/index.html'

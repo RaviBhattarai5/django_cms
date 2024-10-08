@@ -63,7 +63,7 @@ class CountryCreateView(CreateView):
     model = Country
     form_class = CountryForm
     template_name = "master/country/form.html"
-    success_url = reverse_lazy("")
+    success_url = reverse_lazy("country_list")
 
     @permission_required(MENU_SLUG, "Create")
     def dispatch(self, *args, **kwargs):
@@ -78,7 +78,7 @@ class CountryCreateView(CreateView):
         context["page_title"] = "Create Country"
         context["breadcrumbs"] = [
             {"name": "Dashboard", "url": "dashboard"},
-            {"name": "Master Action Taken", "url": "country_list"},
+            {"name": "Master Country", "url": "country_list"},
             {"name": "Create Country", "url": "country_create"},
         ]
         return context
@@ -103,8 +103,8 @@ class CountryUpdateView(UpdateView):
         context["page_title"] = "Update Country Taken"
         context["breadcrumbs"] = [
             {"name": "Dashboard", "url": "dashboard"},
-            {"name": "Master Action Taken", "url": "country_list"},
-            {"name": "Update Master Action Taken"},
+            {"name": "Master Country", "url": "country_list"},
+            {"name": "Update Master Country"},
         ]
         return context
 
