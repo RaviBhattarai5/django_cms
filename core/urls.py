@@ -18,5 +18,6 @@ urlpatterns = [
     path('master-product-bin/', include('apps.master.product_bin.urls')),
     path('master-product-category/', include('apps.master.product_category.urls')),
     path('master-product-group/', include('apps.master.product_group.urls')),
-    # path('', include('role.urls')),
+    path('master-product/', include('apps.master.product.urls')),
+
 ] 
