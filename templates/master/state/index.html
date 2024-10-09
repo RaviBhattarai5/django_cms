@@ -32,7 +32,7 @@
             value="{{ request.GET.title }}"
             class="form-control"
             id="exampleInputIconLeft"
-            placeholder="Search Menu"
+            placeholder="Search State"
             aria-label="Search"
           />
         </div>
@@ -45,11 +45,11 @@
     <thead>
       <tr>
         <th class="border-gray-200">#</th>
-        <th class="border-gray-200">Title</th>
-        <th class="border-gray-200">Parent</th>
-        <th class="border-gray-200">URL</th>
-        <th class="border-gray-200">Position</th>
-        <th class="border-gray-200">Publish</th>
+        <th class="border-gray-200">Country</th>
+        <th class="border-gray-200">State Name</th>
+        <th class="border-gray-200">State Code</th>
+        <th class="border-gray-200">Capital Name</th>
+        <th class="border-gray-200">Disable</th>
         <th class="border-gray-200">Action</th>
       </tr>
     </thead>
@@ -57,13 +57,10 @@
       {% for state in states %}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
-        <td>
-          {% if state.country %} {{ state.parent.title }} {% else %} No Parent
-          {%endif%}
-        </td>
-        <td>{{ state.stateCode }}</td>
-        <td>{{ state.stateNambe }}</td>
-        <td>{{ state.capitalName }}</td>
+        <td>{% if state.country %} {{ state.country }} {% else %} {%endif%}</td>
+        <td>{{ state.state_name }}</td>
+        <td>{{ state.state_code }}</td>
+        <td>{{ state.capital_name }}</td>
         <td>{{ state.disable }}</td>
         <td>
           <!--chek edit-->
