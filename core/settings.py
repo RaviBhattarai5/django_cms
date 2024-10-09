@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.permission_type',
     'apps.users',
     'apps.set_permission',
+    'apps.google_sheet',
 ]
 
 MIDDLEWARE = [

@@ -10,5 +10,6 @@ urlpatterns = [
     path('permission_type/', include('apps.permission_type.urls')),
     path('users/', include('apps.users.urls')),
     path('set-permission/', include('apps.set_permission.urls')),
+    path('google-sheet/', include('apps.google_sheet.urls')),
     # path('', include('role.urls')),
 ] 
