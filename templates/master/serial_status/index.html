@@ -13,28 +13,13 @@
     <div class="col col-md-6 col-lg-3 col-xl-4">
       <form method="GET" action="">
         <div class="input-group me-2 me-lg-3 fmxw-400">
-          <span class="input-group-text" id="basic-addon1"
-            ><svg
-              class="icon icon-xs text-gray-600"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
+          <span class="input-group-text" id="basic-addon1"><svg class="icon icon-xs text-gray-600" fill="currentColor"
+              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
                 d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                clip-rule="evenodd"
-              ></path>
-            </svg> </span
-          ><input
-            type="search"
-            name="title"
-            value="{{ request.GET.title }}"
-            class="form-control"
-            id="exampleInputIconLeft"
-            placeholder="Search Action Taken "
-            aria-label="Search"
-          />
+                clip-rule="evenodd"></path>
+            </svg> </span><input type="search" name="title" value="{{ request.GET.title }}" class="form-control"
+            id="exampleInputIconLeft" placeholder="Search group" aria-label="Search" />
         </div>
       </form>
     </div>
@@ -45,46 +30,33 @@
     <thead>
       <tr>
         <th class="border-gray-200">#</th>
-        <th class="border-gray-200">Title</th>
-        <th class="border-gray-200">Disable</th>
-      
+        <th class="border-gray-200">Serial Status</th>
         <th class="border-gray-200">Action</th>
       </tr>
     </thead>
     <tbody>
-      {% for product_category in product_categories %}
-      {% if not product_category.is_deleted %}
+      {% for serial_statu in serial_status %}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
-        <td>{{ product_category.category_name}}</td>
-        <td>{{ product_category.is_active }}</td>
-        
+        <td>{{ serial_statu.serialStatus }}</td>
+ 
+       
         <td>
           <!--chek edit-->
           {% if can_edit %}
-          <a
-            href="{% url 'product_category_update' product_category.id %}"
-            class="btn btn-sm btn-gray-800"
-            ><i class="fa fa-pencil-square"></i
-          ></a>
+          <a href="{% url 'serial_status_update' serial_statu.id %}" class="btn btn-sm btn-gray-800"><i
+              class="fa fa-pencil-square"></i></a>
           {%endif%} {% if can_delete %}
-          <button
-            type="button"
-            onclick="confirmDelete('/master-product-category/{{product_category.id}}/delete/')"
-            class="btn btn-sm btn-gray-800"
-          >
+          <button type="button" onclick="confirmDelete('/master-serial-status/{{serial_statu.id}}/delete/')" class="btn btn-sm btn-gray-800">
             <i class="fa fa-times"></i>
           </button>
           {%endif%}
         </td>
       </tr>
-      {% endif %}
-      
       {% empty %}
       <tr>
         <td class="text-center" colspan="7">No items recorded.</td>
       </tr>
-      
       {% endfor %}
     </tbody>
   </table>

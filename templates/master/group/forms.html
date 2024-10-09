@@ -1,0 +1,52 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+  <div class="row mb-4">
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="categoryId">category ID</label>
+        {{form.category_id}}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">Group Name <span class="text-danger">*</span></label>
+        {{form.group_name}} {% if form.group_name.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.group_name.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+  
+
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <div class="form-check">
+          <label class="form-check-label" for="is_active"> is_active </label>
+          {{form.is_active}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'menu_list'%}">Cancle</a>
+  </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

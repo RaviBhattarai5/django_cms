@@ -17,7 +17,8 @@ urlpatterns = [
     path('master-branch/', include('apps.master.branch.urls')),
     path('master-product-bin/', include('apps.master.product_bin.urls')),
     path('master-product-category/', include('apps.master.product_category.urls')),
-    path('master-product-group/', include('apps.master.product_group.urls')),
-    path('master-product/', include('apps.master.product.urls')),
+    path('master-products/', include('apps.master.products.urls')),
+    path('master-group/', include('apps.master.group.urls')),
+    path('master-serial-status/', include('apps.master.serial_status.urls')),
 
 ] 

@@ -4,14 +4,18 @@ from .models import ProdutCategory
 class ProdutCategoryForm(forms.ModelForm):
     class Meta:
         model = ProdutCategory
-        fields = ['title', 'disable',]  
-
+        fields = [
+            'category_name', 
+            'is_active', 
+            'created_by', 
+            'updated_by', 
+            'deleted_by', 
+            'updated_date', 
+            'deleted_date'
+        ]
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title'}),
-            'disable': forms.CheckboxInput(attrs={'class': 'form-check-input'}),  
-        }
-
-        labels = {
-            'title': 'Title',
-            'disable': 'Disable',
+            'category_name':forms.TextInput(attrs={'class':'form-control'}),
+            'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'updated_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'deleted_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }

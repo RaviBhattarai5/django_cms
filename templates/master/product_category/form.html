@@ -14,11 +14,11 @@
 
         <div class="col-lg-4 col-sm-6">
             <div class="mb-4">
-                <label for="title">Title</label>
-                {{form.title}} 
-                {% if form.title.errors %}
+                <label for="category_name">Category_Name</label>
+                {{form.category_name}} 
+                {% if form.category_name.errors %}
                 <div class="invalid-feedback" style="display: block !important">
-                    {{ form.title.errors.as_text }}
+                    {{ form.category_name.errors.as_text }}
                 </div>
                 {% endif %}
             </div>
@@ -26,11 +26,11 @@
 
         <div class="col-lg-4 col-sm-6">
             <div class="mb-4 mt-4">
-                <label for="disable">Disable</label>
-                {{form.disable}} 
-                {% if form.disable.errors %}
+                <label for="is_active">is_Active</label>
+                {{form.is_active}} 
+                {% if form.is_active.errors %}
                 <div class="invalid-feedback" style="display: block !important">
-                    {{ form.disable.errors.as_text }}
+                    {{ form.is_active.errors.as_text }}
                 </div>
                 {% endif %}
             </div>

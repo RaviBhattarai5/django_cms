@@ -50,9 +50,9 @@ EXTERNAL_APPS=[
     'apps.master.branch',
     'apps.master.product_bin',
     'apps.master.product_category',
-    'apps.master.product_group',
-    'apps.master.product',
+    'apps.master.products',
     'apps.master.group',
+    'apps.master.serial_status',
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ProductConfig(AppConfig):
+class SerialStatusConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.master.product'
+    name = 'apps.master.serial_status'
