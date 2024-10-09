@@ -18,30 +18,30 @@
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label for="title">stateCode <span class="text-danger">*</span></label>
-        {{form.stateCode}} {% if form.stateCode.errors %}
+        <label for="title">State Code <span class="text-danger">*</span></label>
+        {{form.state_code}} {% if form.state_code.errors %}
         <div class="invalid-feedback" style="display: block !important">
-          {{ form.stateCode.errors.as_text }}
+          {{ form.state_code.errors.as_text }}
         </div>
         {% endif %}
       </div>
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label for="title">stateName <span class="text-danger">*</span></label>
-        {{form.stateName}} {% if form.stateName.errors %}
+        <label for="title">State Name <span class="text-danger">*</span></label>
+        {{form.state_name}} {% if form.state_name.errors %}
         <div class="invalid-feedback" style="display: block !important">
-          {{ form.stateName.errors.as_text }}
+          {{ form.state_name.errors.as_text }}
         </div>
         {% endif %}
       </div>
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label for="url">capitalName <span class="text-danger">*</span></label>
-        {{form.capitalName}} {% if form.capitalName.errors %}
+        <label for="url">Capital Name <span class="text-danger">*</span></label>
+        {{form.capital_name}} {% if form.capital_name.errors %}
         <div class="invalid-feedback" style="display: block !important">
-          {{ form.capitalName.errors.as_text }}
+          {{ form.capital_name.errors.as_text }}
         </div>
         {% endif %}
       </div>
@@ -61,7 +61,7 @@
   </div>
   <div class="mb-4">
     <button class="btn btn-sm btn-primary" type="submit">Save</button>
-    <a class="btn btn-sm btn-gray-200" href="{%url 'state_list'%}">Cancle</a>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'state_list'%}">Cancel</a>
   </div>
 </form>
 {% endblock content %}
