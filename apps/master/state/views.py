@@ -7,6 +7,9 @@ from django.contrib import messages
 from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
+from django.utils import timezone
+
+
 _State_slug='state'
 class StateListView(ListView):
     model = State
@@ -81,6 +84,7 @@ class StateUpdateView(UpdateView):
     
     def form_valid(self, form):
         state_instance = form.save(commit=False)
+        state_instance.updated_at = timezone.now()
         state_instance.updated_by = self.request.user
         state_instance.save()
         messages.success(self.request, 'Updated Successfully')
