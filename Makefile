@@ -25,3 +25,14 @@ master:
 	poetry run django-admin startapp $(name) apps/master/$(name)
 	touch apps/master/$(name)/urls.py; \
 	touch apps/master/$(name)/forms.py
+
+# To create app under any directory  --> make app path/to/the/folder/app_name
+.PHONY: app
+app:
+	$(eval dir := $(wordlist 2,2,$(MAKECMDGOALS)))
+	@echo "Creating app in: $(dir)"
+	@mkdir -p $(dir); \
+	poetry run django-admin startapp $(notdir $(dir)) $(dir); 
+
+%:
+	@:
