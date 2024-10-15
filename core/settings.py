@@ -53,6 +53,7 @@ EXTERNAL_APPS=[
     'apps.master.products',
     'apps.master.group',
     'apps.master.serial_status',
+    'apps.master.pick_list',
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)

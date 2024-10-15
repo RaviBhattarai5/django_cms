@@ -20,5 +20,6 @@ urlpatterns = [
     path('master-products/', include('apps.master.products.urls')),
     path('master-group/', include('apps.master.group.urls')),
     path('master-serial-status/', include('apps.master.serial_status.urls')),
+    path('master-pick-list/', include('apps.master.pick_list.urls')),
 
 ] 
