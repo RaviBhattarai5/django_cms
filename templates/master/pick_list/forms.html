@@ -34,8 +34,8 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-lg-12 col-sm-12">
-            <div class="mb-4 mt-4">
+        <div class="col-lg-4 col-sm-12">
+            <div class="mb-4">
                 <label for="description">Serial No.</label>
                 {{form.serial_no}}
                 {% if form.serial_no.errors %}
@@ -55,7 +55,7 @@
     </div>
     <div class="mb-4">
         <button class="btn btn-sm btn-primary" type="submit">Save</button>
-        <a class="btn btn-sm btn-gray-200" href="{%url 'product_bin_list'%}">Cancle</a>
+        <a class="btn btn-sm btn-gray-200" href="{%url 'pick_list'%}">Cancle</a>
     </div>
 </form>
 {% endblock content %}

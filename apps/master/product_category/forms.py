@@ -19,3 +19,7 @@ class ProdutCategoryForm(forms.ModelForm):
             'updated_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             'deleted_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
+
+    labels={
+        'category_name':'Category Name'
+    }

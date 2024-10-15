@@ -87,7 +87,7 @@ class PickListUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Pick List'
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'pick_list'},{'name':'Update PickList',  'url':'pick_list_update'}]
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Pick List', 'url':'pick_list'},{'name':'Update PickList'}]
         return context
     
 class PickListDeleteView(DeleteView):

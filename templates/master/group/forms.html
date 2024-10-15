@@ -12,7 +12,7 @@
   <div class="row mb-4">
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label class="my-1 me-2" for="categoryId">category ID</label>
+        <label class="my-1 me-2" for="categoryId">{{form.category_id.label}} <span class="text-danger">*</span></label>
         {{form.category_id}}
       </div>
     </div>
@@ -32,9 +32,9 @@
 
 
     <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <div class="form-check">
-          <label class="form-check-label" for="is_active"> is_active </label>
+      <div class="mb-4 mt-4">
+        <div class="form-check ">
+          <label class="form-check-label" for="is_active"> {{form.is_active.label}} </label>
           {{form.is_active}}
         </div>
       </div>

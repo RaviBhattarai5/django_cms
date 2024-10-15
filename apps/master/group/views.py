@@ -67,7 +67,7 @@ class GroupCreateView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Groupte Menu'
+        context['page_title'] = 'Groupe '
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'group_list'},{'name':'Create Group', 'url':'group_create'}]
         return context
     
@@ -91,7 +91,7 @@ class GroupUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Groupte Menu'
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'group_list'},{'name':'Update Group',  'url':'group_update'}]
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'group_list'},{'name':'Update Group'}]
         return context
     
 class GroupDeleteView(DeleteView):
