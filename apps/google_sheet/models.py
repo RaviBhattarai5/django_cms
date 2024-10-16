@@ -1,3 +1,31 @@
 from django.db import models
 
-# Create your models here.
+class DataFetchProgress(models.Model):
+    task_id = models.CharField(max_length=255, unique=True)
+    total_rows = models.IntegerField(default=0)
+    processed_rows = models.IntegerField(default=0)
+    status = models.CharField(max_length=50, default='pending')
+    error_message = models.TextField(blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+class InterestedSheet(models.Model):
+    init_date = models.DateTimeField(blank=True, null=True)
+    ph_no = models.CharField(max_length=100, blank=True, null=True)
+    msg = models.TextField(blank=True, null=True)
+    interest = models.DecimalField(max_digits=10, decimal_places=3)
+    alt_num = models.JSONField(blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    source = models.CharField(max_length=255, blank=True, null=True)
+    assign_to = models.CharField(max_length=255, blank=True, null=True)
+    follow_up = models.CharField(max_length=255, blank=True, null=True)
+    status = models.CharField(max_length=255, blank=True, null=True)
+    remarks1 = models.CharField(max_length=255, blank=True, null=True)
+    remarks2 = models.CharField(max_length=255, blank=True, null=True)
+    remarks3 = models.CharField(max_length=255, blank=True, null=True)
+    enquiry_no = models.CharField(max_length=255, blank=True, null=True)
+    enquiry_date = models.DateField(blank=True, null=True)
+    enquiry_caller_name = models.CharField(max_length=255, blank=True, null=True)
+    calling_status = models.CharField(max_length=255, blank=True, null=True)
+    is_in_qualified_lead = models.CharField(max_length=255, blank=True, null=True)
+    first_source = models.CharField(max_length=255, blank=True, null=True)
+    fb_lead_no = models.CharField(max_length=255, blank=True, null=True)

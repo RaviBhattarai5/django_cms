@@ -1,4 +1,5 @@
 from datetime import datetime
+from apps.google_sheet.models import DataFetchProgress
 
 def arrange_pagination(context):
     paginator = context['paginator']
@@ -26,3 +27,17 @@ def arrange_date_time_formate(date_str):
         print(f"Error parsing date: {e}")
         return None
     
+def arrange_date(date_str):
+    try:
+        date = arrange_date_time_formate(date_str).date()
+        return date
+    except ValueError as e:
+        print(f"Error parsing date: {e}")
+        return None
+
+def init_process_tracking(sheet_name, total_rows):
+    progress, created = DataFetchProgress.objects.get_or_create(task_id=sheet_name)
+    progress.total_rows = total_rows
+    progress.status = 'in_progress'
+    progress.save()
+    return progress

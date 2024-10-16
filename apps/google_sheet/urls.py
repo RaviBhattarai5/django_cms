@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import get_sheet_data
+from .views import get_sheet_data, InterestedSheetListView
 
 urlpatterns = [
-    path('', get_sheet_data, name='sheet_data'),
+    path('', InterestedSheetListView.as_view(), name='sheet_data'),
 ]

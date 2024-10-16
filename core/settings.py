@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.set_permission',
     'apps.google_sheet',
+    'background_task',
 ]
 
 MIDDLEWARE = [

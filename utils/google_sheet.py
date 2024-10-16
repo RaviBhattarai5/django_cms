@@ -27,7 +27,8 @@ def get_total_rows_from_metadata(spreadsheet_id=SPREADSHEET_ID, sheet_name=RANGE
     return total_rows
 
 
-def fetch_data_in_batches(spreadsheet_id=SPREADSHEET_ID, sheet_name=RANGE_NAME, start_row=1, batch_size=500, last_col='X'):
+#Example of batch fetching data from google sheet
+def fetch_data_in_batches(spreadsheet_id=SPREADSHEET_ID, sheet_name=RANGE_NAME, start_row=1, batch_size=500, last_col='U'):
     service = connect_sheet()
     current_row = start_row
     total_rows = get_total_rows_from_metadata(spreadsheet_id, sheet_name)
