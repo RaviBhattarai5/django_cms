@@ -72,7 +72,8 @@
 
         <div class="multi-level collapse" role="list" id="submenu-{{item.menu.id}}" aria-expanded="false">
           <ul class="flex-column nav">
-            {% for child in item.children %} {%url child.menu.url as menu_url %}
+            {% for child in item.children %}
+             {%url child.menu.url as menu_url %}
             <li class="nav-item {%if menu_url and menu_url in request.path%}active{%endif%}">
               {% if child.children %}
               <span class="nav-link collapsed d-flex justify-content-between align-items-center"

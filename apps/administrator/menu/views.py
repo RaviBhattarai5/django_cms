@@ -7,6 +7,7 @@ from django.contrib import messages
 from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
+
 _menu_slug='menu'
 class MenuListView(ListView):
     model = Menu
@@ -86,6 +87,7 @@ class MenuUpdateView(UpdateView):
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'menu_list'},{'name':'Update Menu'}]
         return context
     
+
 class MenuDeleteView(DeleteView):
     model = Menu
     template_name = 'menu/confirm_delete.html'

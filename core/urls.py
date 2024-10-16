@@ -23,5 +23,6 @@ urlpatterns = [
     path('master-pick-list/', include('apps.master.pick_list.urls')),
     path('master-customer/', include('apps.master.customer.urls')),
     path('master-holiday/', include('apps.master.holiday.urls')),
+    path('master-holiday-in-area/', include('apps.master.holiday_in_area.urls')),
 
 ] 

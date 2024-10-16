@@ -56,6 +56,8 @@ EXTERNAL_APPS=[
     'apps.master.pick_list',
     'apps.master.customer',
     'apps.master.holiday',
+    'apps.master.holiday_in_area',
+    
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)
@@ -70,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'core.middleware.RedirectIfNotLoggedInMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'core.urls'

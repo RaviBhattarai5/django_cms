@@ -1,6 +1,9 @@
 <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
   <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
-    {%if breadcrumbs %} {% for breadcrumb in breadcrumbs %} {%if forloop.first%}
+    {%if breadcrumbs %}
+
+     {% for breadcrumb in breadcrumbs %} 
+     {%if forloop.first%}
     <li class="breadcrumb-item active">
       <a href="{%url 'dashboard'%}">
         <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -19,7 +22,10 @@
       <a href="#"> {{ breadcrumb.name }} </a>
       {%endif%}
     </li>
-    {%endif%} {% endfor %} {%else%}
+    {%endif%} 
+    {% endfor %}
+    
+     {%else%}
     <li class="breadcrumb-item active">
       <a href="{%url 'dashboard'%}">
         <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"

@@ -4,11 +4,13 @@ from .models import Holidays
 class HolidaysForm(forms.ModelForm):
     class Meta:
         model = Holidays
-        fields = ['sessionYr', 'holiday_Name', 'holiday_date', 'from_date', 'to_date', 'holidayType', 'is_active'] 
+        fields = ['session_year', 'holiday_name', 'holiday_date', 'from_date', 'to_date', 'holiday_type', 'is_active'] 
         widgets = {
-            'holiday_date': forms.DateInput(attrs={'type': 'date'}), 
-            'from_date': forms.DateInput(attrs={'type': 'date'}),
-            'to_date': forms.DateInput(attrs={'type': 'date'}),
+            'holiday_date': forms.DateInput(attrs={'type': 'date', 'class':'form-control'}), 
+            'from_date': forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'to_date': forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
+            'holiday_type':forms.Select(attrs={'class':'form-control'}),
+            'holiday_name':forms.TextInput(attrs={'class':'form-control'}),
         }
         labels = {
             'sessionYr': 'Session Year',
@@ -16,8 +18,13 @@ class HolidaysForm(forms.ModelForm):
             'holiday_date': 'Holiday Date',
             'from_date': 'From Date',
             'to_date': 'To Date',
-            'holidayType': 'Holiday Type',
+            'holiday_type': 'Holiday Type',
             'is_active': 'Is Active',
+        }
+
+        error_messages = {
+            'holiday_name': {'required': 'Holiday name cannot be blank.'},
+            'holiday_type': {'required': 'Holiday date is required.'},
         }
 
     def clean(self):
