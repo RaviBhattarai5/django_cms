@@ -18,13 +18,18 @@ migrations:
 migrate:
 	poetry run python manage.py migrate
 
-# To create app under master run command --> make master name=app_name
+# To create app under master run command --> make master app_name
 .PHONY: master
 master:
+	$(eval name := $(wordlist 2,2,$(MAKECMDGOALS)))
+	@echo "Creating master app: $(name)"
 	@mkdir -p apps/master/$(name); \
-	poetry run django-admin startapp $(name) apps/master/$(name)
+	poetry run django-admin startapp $(name) apps/master/$(name); \
 	touch apps/master/$(name)/urls.py; \
 	touch apps/master/$(name)/forms.py
+
+%:
+	@:
 
 # To create app under any directory  --> make app path/to/the/folder/app_name
 .PHONY: app
