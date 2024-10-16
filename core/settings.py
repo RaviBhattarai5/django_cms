@@ -64,6 +64,7 @@ EXTERNAL_APPS=[
     'apps.master.customer',
     'apps.master.holiday',
     'apps.master.holiday_in_area',
+    'apps.master.holiday_type',
     
 ]
 

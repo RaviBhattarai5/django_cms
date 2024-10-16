@@ -30,5 +30,6 @@ urlpatterns = [
     path('master-customer/', include('apps.master.customer.urls')),
     path('master-holiday/', include('apps.master.holiday.urls')),
     path('master-holiday-in-area/', include('apps.master.holiday_in_area.urls')),
+    path('master-holiday-type/', include('apps.master.holiday_type.urls')),
 
 ] 
