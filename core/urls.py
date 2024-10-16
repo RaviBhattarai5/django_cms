@@ -12,6 +12,12 @@ urlpatterns = [
     path('set-permission/', include('apps.administrator.set_permission.urls')),
 
     path('master-action-taken/', include('apps.master.master_action_taken.urls')),
+    path('department/', include('apps.master.department.urls')),
+    path('enquiry-state/', include('apps.master.enquiry_state.urls')),
+    path('observed-problem/', include('apps.master.observed_problem.urls')),
+    path('operation-performed/', include('apps.master.operation_performed.urls')),
+    path('planning-activity-category/', include('apps.master.planning_activity_category.urls')),
+    path('planning-activity/', include('apps.master.planning_activity.urls')),
     path('master-country/', include('apps.master.country.urls')),
     path('master-state/', include('apps.master.state.urls')),
     path('master-branch/', include('apps.master.branch.urls')),

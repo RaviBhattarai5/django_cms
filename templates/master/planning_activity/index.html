@@ -32,7 +32,7 @@
             value="{{ request.GET.title }}"
             class="form-control"
             id="exampleInputIconLeft"
-            placeholder="Search State"
+            placeholder="Search Planning Activity"
             aria-label="Search"
           />
         </div>
@@ -45,35 +45,31 @@
     <thead>
       <tr>
         <th class="border-gray-200">#</th>
-        <th class="border-gray-200">Country</th>
-        <th class="border-gray-200">State Name</th>
-        <th class="border-gray-200">State Code</th>
-        <th class="border-gray-200">Capital Name</th>
+        <th class="border-gray-200">Title</th>
+        <th class="border-gray-200">Category</th>
         <th class="border-gray-200">Disable</th>
         <th class="border-gray-200">Action</th>
       </tr>
     </thead>
     <tbody>
-      {% for state in states %}
+      {% for planning_activity in planning_activities %}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
-        <td>{% if state.country %} {{ state.country }} {% else %} {%endif%}</td>
-        <td>{{ state.state_name }}</td>
-        <td>{{ state.state_code }}</td>
-        <td>{{ state.capital_name }}</td>
-        <td>{{ state.disable }}</td>
+        <td>{{ planning_activity.title }}</td>
+        <td>{{ planning_activity.category }}</td>
+        <td>{{ planning_activity.disable }}</td>
         <td>
           <!--chek edit-->
           {% if can_edit %}
           <a
-            href="{% url 'state_update' state.id %}"
+            href="{% url 'planning_activity_update' planning_activity.id %}"
             class="btn btn-sm btn-gray-800"
             ><i class="fa fa-pencil-square"></i
           ></a>
           {%endif%} {% if can_delete %}
           <button
             type="button"
-            onclick="confirmDelete('/master-state/{{state.id}}/delete/')"
+            onclick="confirmDelete('/planning-activity/{{planning_activity.id}}/delete/')"
             class="btn btn-sm btn-gray-800"
           >
             <i class="fa fa-times"></i>

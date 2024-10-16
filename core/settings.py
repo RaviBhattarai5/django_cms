@@ -45,6 +45,13 @@ EXTERNAL_APPS=[
     'apps.administrator.permission_type',
 
     'apps.master.master_action_taken',
+    'apps.master.department',
+    'apps.master.enquiry_state',
+    'apps.master.observed_problem',
+    'apps.master.operation_performed',
+    'apps.master.planning_activity_category',
+    'apps.master.planning_activity',
+    
     'apps.master.country',
     'apps.master.state',
     'apps.master.branch',

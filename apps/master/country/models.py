@@ -10,5 +10,5 @@ class Country(models.Model):
     disable = models.BooleanField(default=False) 
 
     def __str__(self):
-        return str(self.id)
+        return str(self.name)
 

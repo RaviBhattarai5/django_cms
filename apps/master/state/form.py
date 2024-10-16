@@ -4,21 +4,21 @@ from .models import State
 class StateForm(forms.ModelForm):
     class Meta:
         model = State
-        fields = ['country', 'stateCode', 'stateName', 'capitalName', 'disable']  
+        fields = ['country', 'state_code', 'state_name', 'capital_name', 'disable']  
         
         widgets = {
             'country': forms.Select(attrs={'class': 'form-control'}),  
-            'stateCode': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state code'}),
-            'stateName': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state name'}),
-            'capitalName': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter capital name'}),
+            'state_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state code'}),
+            'state_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state name'}),
+            'capital_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter capital name'}),
             'disable': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
         
       
         labels = {
             'country': 'Country',
-            'stateCode': 'State Code',
-            'stateName': 'State Name',
-            'capitalName': 'Capital Name',
+            'state_code': 'State Code',
+            'state_name': 'State Name',
+            'capital_name': 'Capital Name',
             'disable': 'Disable State',
         }

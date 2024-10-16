@@ -7,7 +7,10 @@ from django.contrib import messages
 from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
-_State_slug='master_state'
+from django.utils import timezone
+
+
+_State_slug='state'
 class StateListView(ListView):
     model = State
     template_name = 'master/state/index.html'
@@ -20,7 +23,7 @@ class StateListView(ListView):
     
     def get_queryset(self):
         queryset = State.objects.all().order_by('id')
-        title = self.request.GET.get('stateName')
+        title = self.request.GET.get('state_name')
         if title:
             queryset = queryset.filter(title__icontains=title) 
         return queryset
@@ -56,6 +59,9 @@ class StateCreateView(CreateView):
         return super(StateCreateView, self).dispatch(*args, **kwargs)
     
     def form_valid(self, form):
+        state_instance = form.save(commit=False)
+        state_instance.created_by = self.request.user
+        state_instance.save()
         messages.success(self.request, 'Created Successfully')
         return super().form_valid(form)
     
@@ -77,6 +83,10 @@ class StateUpdateView(UpdateView):
         return super().dispatch(*args, **kwargs)
     
     def form_valid(self, form):
+        state_instance = form.save(commit=False)
+        state_instance.updated_at = timezone.now()
+        state_instance.updated_by = self.request.user
+        state_instance.save()
         messages.success(self.request, 'Updated Successfully')
         return super().form_valid(form)
     
