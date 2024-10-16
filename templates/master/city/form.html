@@ -1,0 +1,50 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+  <div class="row mb-4">
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="country">State</label>
+        {{form.state}}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="title">Name <span class="text-danger">*</span></label>
+        {{form.name}} {% if form.name.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.name.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="position">disable</label>
+        {{form.disable}} {% if form.disable.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.disable.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+  <div class="mb-4">
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'state_list'%}">Cancel</a>
+  </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

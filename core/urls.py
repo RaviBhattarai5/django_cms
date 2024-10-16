@@ -25,5 +25,6 @@ urlpatterns = [
     path('master-product-category/', include('apps.master.product_category.urls')),
     path('master-product-group/', include('apps.master.product_group.urls')),
     path('master-product/', include('apps.master.product.urls')),
+    path('city/', include('apps.master.city.urls')),
 
 ] 

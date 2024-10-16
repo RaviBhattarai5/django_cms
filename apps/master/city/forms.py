@@ -1,22 +1,18 @@
 from django import forms
-from .models import State
+from .models import City
 
-class StateForm(forms.ModelForm):
+class CityForm(forms.ModelForm):
     class Meta:
-        model = State
-        fields = ['country', 'state_code', 'state_name', 'capital_name', 'disable']  
+        model = City
+        fields = ['name', 'state','disable']  
         
         widgets = {
-            'country': forms.Select(attrs={'class': 'form-control'}),  
-            'state_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state code'}),
-            'state_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state name'}),
-            'capital_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter capital name'}),
+            'state': forms.Select(attrs={'class': 'form-control'}),  
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter City name'}),
             'disable': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
         labels = {
-            'country': 'Country',
-            'state_code': 'State Code',
-            'state_name': 'State Name',
-            'capital_name': 'Capital Name',
-            'disable': 'Disable State',
+            'state': 'State',
+            'name': 'Name',
+            'disable': 'Disable City',
         }
