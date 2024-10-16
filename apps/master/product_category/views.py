@@ -33,9 +33,9 @@ class ProductCategoryListView(ListView):
         context['page_title'] = 'ProductCategory'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'ProductCategory', 'url':'product_category_list'}]
         context['new_url'] = 'product_category_create'
-        context['can_add'] = has_permission(self.request.user, 'ProductCategory', 'Create')
-        context['can_edit'] = has_permission(self.request.user, 'ProductCategory', 'Edit')
-        context['can_delete'] = has_permission(self.request.user, 'ProductCategory', 'Delete')
+        context['can_add'] = has_permission(self.request.user, 'products', 'Create')
+        context['can_edit'] = has_permission(self.request.user, 'products', 'Edit')
+        context['can_delete'] = has_permission(self.request.user, 'products', 'Delete')
         
         context = arrange_pagination(context)
         return context
@@ -66,7 +66,7 @@ class ProductCategoryCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Create ProductCategory'
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'ProductCategory', 'url':'product_category_list'},{'name':'Create ProductCategory', 'url':'product_bin_create'}]
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'ProductCategory', 'url':'product_category_list'},{'name':'Create ProductCategory'}]
         return context
     
 class ProductCategoryUpdateView(UpdateView):

@@ -26,5 +26,12 @@ urlpatterns = [
     path('master-product-group/', include('apps.master.product_group.urls')),
     path('master-product/', include('apps.master.product.urls')),
     path('city/', include('apps.master.city.urls')),
+    path('master-products/', include('apps.master.products.urls')),
+    path('master-group/', include('apps.master.group.urls')),
+    path('master-serial-status/', include('apps.master.serial_status.urls')),
+    path('master-pick-list/', include('apps.master.pick_list.urls')),
+    path('master-customer/', include('apps.master.customer.urls')),
+    path('master-holiday/', include('apps.master.holiday.urls')),
+    path('master-holiday-in-area/', include('apps.master.holiday_in_area.urls')),
 
 ] 

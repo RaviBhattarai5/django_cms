@@ -1,0 +1,81 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }} <span class="text-danger">*</span></div>
+    {% endif %}
+
+    <div class="row mb-4">
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="contact_name">{{ form.contact_name.label }} <span class="text-danger">*</span></label>
+                {{form.contact_name}}
+                {% if form.contact_name.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.contact_name.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="company_name">{{form.company_name.label}} <span class="text-danger">*</span></label>
+                {{form.company_name}}
+                {% if form.company_name.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.company_name.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="address">{{ form.address.label }} <span class="text-danger">*</span></label>
+                {{form.address}}
+                {% if form.address.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.address.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="mobile">{{ form.mobile.label }} <span class="text-danger">*</span></label>
+                {{form.mobile}}
+                {% if form.mobile.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.mobile.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="email"> {{ form.email.label }} <span class="text-danger">*</span></label>
+                {{form.email}}
+                {% if form.email.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.email.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        <a class="btn btn-sm btn-gray-200" href="{%url 'customer_list'%}">Cancle</a>
+    </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

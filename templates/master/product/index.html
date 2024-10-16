@@ -47,18 +47,19 @@
         <th class="border-gray-200">#</th>
         <th class="border-gray-200">Title</th>
         <th class="border-gray-200">Product Code</th>
-        <th class="border-gray-200">hsnCode</th>
-      
+        <th class="border-gray-200">Description</th>
         <th class="border-gray-200">Action</th>
       </tr>
     </thead>
     <tbody>
       {% for product in products %}
+      {% if not product.is_deleted%}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
-        <td>{{ product.title }}</td>
-        <td>{{ product.productCode }}</td>
-        <td>{{ product.hsnCode }}</td>
+        <td>{{ product.product_name}}</td>
+        <td>{{ product.product_code }}</td>
+        <td>{{ product.description }}</td>
+      
         
         <td>
           <!--chek edit-->
@@ -71,7 +72,7 @@
           {%endif%} {% if can_delete %}
           <button
             type="button"
-            onclick="confirmDelete('/master-product/{{product.id}}/delete/')"
+            onclick="confirmDelete('/master-products/{{product.id}}/delete/')"
             class="btn btn-sm btn-gray-800"
           >
             <i class="fa fa-times"></i>
@@ -79,7 +80,9 @@
           {%endif%}
         </td>
       </tr>
+      {% endif %}
       {% empty %}
+
       <tr>
         <td class="text-center" colspan="7">No items recorded.</td>
       </tr>

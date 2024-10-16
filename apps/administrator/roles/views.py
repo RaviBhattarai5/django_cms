@@ -53,9 +53,9 @@ class RolesView(View):
                 {'name': 'Roles', 'url': 'roles'}
             ],
             'new_url': reverse_lazy('roles'),
-            'can_add': has_permission(request.user, 'role', 'Create'),  # Permission to create roles
-            'can_edit': has_permission(request.user, 'role', 'Edit'),  # Permission to edit roles
-            'can_delete': has_permission(request.user, 'role', 'Delete'),  # Permission to delete roles
+            'can_add': has_permission(request.user, 'role', 'Create'),  
+            'can_edit': has_permission(request.user, 'role', 'Edit'), 
+            'can_delete': has_permission(request.user, 'role', 'Delete'),
         }
 
 _role_slug='role'
