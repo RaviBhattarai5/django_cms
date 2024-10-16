@@ -45,35 +45,31 @@
     <thead>
       <tr>
         <th class="border-gray-200">#</th>
-        <th class="border-gray-200">Country</th>
-        <th class="border-gray-200">State Name</th>
-        <th class="border-gray-200">State Code</th>
-        <th class="border-gray-200">Capital Name</th>
+        <th class="border-gray-200">State</th>
+        <th class="border-gray-200">Name</th>
         <th class="border-gray-200">Disable</th>
         <th class="border-gray-200">Action</th>
       </tr>
     </thead>
     <tbody>
-      {% for state in states %}
+      {% for city in cities %}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
-        <td>{% if state.country %} {{ state.country }} {% else %} {%endif%}</td>
-        <td>{{ state.state_name }}</td>
-        <td>{{ state.state_code }}</td>
-        <td>{{ state.capital_name }}</td>
-        <td>{{ state.disable }}</td>
+        <td>{% if city.state %} {{ city.state }} {% else %} {%endif%}</td>
+        <td>{{ city.name }}</td>
+        <td>{{ city.disable }}</td>
         <td>
           <!--chek edit-->
           {% if can_edit %}
           <a
-            href="{% url 'state_update' state.id %}"
+            href="{% url 'city_update' city.id %}"
             class="btn btn-sm btn-gray-800"
             ><i class="fa fa-pencil-square"></i
           ></a>
           {%endif%} {% if can_delete %}
           <button
             type="button"
-            onclick="confirmDelete('/master-state/{{state.id}}/delete/')"
+            onclick="confirmDelete('/city/{{city.id}}/delete/')"
             class="btn btn-sm btn-gray-800"
           >
             <i class="fa fa-times"></i>

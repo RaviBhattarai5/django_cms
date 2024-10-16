@@ -14,6 +14,9 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
+from django.utils import timezone
+from django.shortcuts import redirect
+
 MENU_SLUG = "city"
 
 
@@ -28,7 +31,7 @@ class CityListView(ListView):
         return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
-        queryset = City.objects.all().order_by("id")
+        queryset = City.objects.filter(deleted_by = None).order_by("id")
         name = self.request.GET.get("name")
         if name:
             queryset = queryset.filter(title__icontains=name)
@@ -70,6 +73,7 @@ class CityCreateView(CreateView):
         return super(CityCreateView, self).dispatch(*args, **kwargs)
 
     def form_valid(self, form):
+        form.instance.created_by = self.request.user
         messages.success(self.request, "Created Successfully")
         return super().form_valid(form)
 
@@ -95,6 +99,8 @@ class CityUpdateView(UpdateView):
         return super().dispatch(*args, **kwargs)
 
     def form_valid(self, form):
+        form.instance.updated_by = self.request.user
+        form.instance.updated_at = timezone.now()
         messages.success(self.request, "Updated Successfully")
         return super().form_valid(form)
 
@@ -118,6 +124,10 @@ class CityDeleteView(DeleteView):
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
-    def form_valid(self, form):
-        messages.success(self.request, "Deleted Successfully")
-        return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+        city = self.get_object()
+        city.deleted_by = self.request.user  
+        city.deleted_at = timezone.now() 
+        city.save()
+        messages.success(self.request, 'Deleted successfully')
+        return redirect(self.success_url)
