@@ -71,6 +71,7 @@ EXTERNAL_APPS=[
     'apps.master.ecc',
     'apps.master.transporter',
     'apps.master.party',
+    'apps.master.lead_source',
 
     
 

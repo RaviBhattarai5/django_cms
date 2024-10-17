@@ -37,10 +37,8 @@ urlpatterns = [
     path('area/',include('apps.master.area.urls')),
     path('ecc/',include('apps.master.ecc.urls')),
     path('transporter/',include('apps.master.transporter.urls')),
-
     path('party/',include('apps.master.party.urls')),
-
-
     path('master-holiday-type/', include('apps.master.holiday_type.urls')),
+    path('master-lead-source/', include('apps.master.lead_source.urls')),
 
 ] 

@@ -1,0 +1,67 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+
+<form method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="row mb-4">
+
+        <div class="col-lg-6 col-sm-6">
+            <div class="mb-4">
+                <label for="lead_source_code">{{form.lead_source_code.label}} <span class="text-danger">*</span></label>
+                {{form.lead_source_code}}
+                {% if form.lead_source_code.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.lead_source_code.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+            <div class="mb-4">
+                <label for="serial_no">{{form.lead_source_name.label }}<span class="text-danger">*</span></label>
+                {{form.lead_source_name}}
+                {% if form.lead_source_name.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.lead_source_name.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <div class="mb-4 mt-4">
+                <label for="description">{{form.description.label}}</label>
+                {{form.description}}
+                {% if form.description.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.description.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label class="my-1 me-2" for="serial_status">{{form.user.label}} <span class="text-danger">*</span></label>
+                {{form.user}}
+            </div>
+        </div>
+
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        <a class="btn btn-sm btn-gray-200" href="{%url 'product_list'%}">Cancel</a>
+    </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}
