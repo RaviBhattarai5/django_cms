@@ -19,7 +19,6 @@ from django.shortcuts import redirect
 
 MENU_SLUG = "party"
 
-
 class PartyListView(ListView):
     model = Party
     template_name = "master/party/index.html"

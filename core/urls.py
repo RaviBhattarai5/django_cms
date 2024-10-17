@@ -40,5 +40,6 @@ urlpatterns = [
     path('party/',include('apps.master.party.urls')),
     path('master-holiday-type/', include('apps.master.holiday_type.urls')),
     path('master-lead-source/', include('apps.master.lead_source.urls')),
+    path('master-fms-stage/', include('apps.master.fms_stage.urls')),
 
 ] 

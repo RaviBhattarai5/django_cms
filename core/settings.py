@@ -73,6 +73,8 @@ EXTERNAL_APPS=[
     'apps.master.party',
     'apps.master.lead_source',
 
+    'apps.master.fms_stage',
+
     
 
 ]
