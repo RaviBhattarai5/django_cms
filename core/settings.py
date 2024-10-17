@@ -74,6 +74,7 @@ EXTERNAL_APPS=[
     'apps.master.lead_source',
 
     'apps.master.fms_stage',
+    'apps.master.links',
 
     
 
