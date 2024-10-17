@@ -1,0 +1,128 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+  <div class="row mb-4">
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="categoryId">{{form.area.label}} <span class="text-danger">*</span></label>
+        {{form.area}}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.transporter_name.label}}<span class="text-danger">*</span></label>
+        {{form.transporter_name}} {% if form.transporter_name.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.transporter_name.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.gst_no.label}}<span class="text-danger">*</span></label>
+        {{form.gst_no}} {% if form.gst_no.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.gst_no.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.mobile_no1.label}}<span class="text-danger">*</span></label>
+        {{form.mobile_no1}} {% if form.mobile_no1.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.mobile_no1.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.mobile_no2.label}}<span class="text-danger">*</span></label>
+        {{form.mobile_no2}} {% if form.mobile_no2.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.mobile_no2.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.tracking_url.label}}<span class="text-danger">*</span></label>
+        {{form.tracking_url}} {% if form.tracking_url.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.tracking_url.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.tpt_charge.label}}<span class="text-danger">*</span></label>
+        {{form.tpt_charge }} {% if form.tpt_charge.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.tpt_charge.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.min_weight.label}}<span class="text-danger">*</span></label>
+        {{form.min_weight }} {% if form.min_weight.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.min_weight.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="groupName">{{form.min_weight_charge.label}}<span class="text-danger">*</span></label>
+        {{form.min_weight_charge }} {% if form.min_weight_charge.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.min_weight_charge.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+  
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4 mt-4">
+        <div class="form-check ">
+          <label class="form-check-label" for="is_active"> {{form.is_active.label}} </label>
+          {{form.is_active}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'menu_list'%}">Cancle</a>
+  </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

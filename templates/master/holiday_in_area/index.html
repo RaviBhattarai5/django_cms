@@ -45,20 +45,20 @@
     <thead>
       <tr>
         <th class="border-gray-200">#</th>
-        <th class="border-gray-200">Title</th>
-        <th class="border-gray-200">holiday Code</th>
-        <th class="border-gray-200">Description</th>
+        <th class="border-gray-200">Holiday ID</th>
+        <th class="border-gray-200">Area ID</th>
+        <th class="border-gray-200">Is Active</th>
         <th class="border-gray-200">Action</th>
       </tr>
     </thead>
     <tbody>
-      {% for holiday in holidays %}
-      {% if not holiday.is_deleted%}
+      {% for holiday_in_area in holiday_in_areas %}
+      
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
-        <td>{{ holiday.from_date}}</td>
-        <td>{{ holiday.to_date }}</td>
-        <td>{{ holiday.holidayType }}</td>
+        <td>{{ holiday_in_areas.holiday_id}}</td>
+        <td>{{ holiday_in_areas.area_id }}</td>
+        <td>{{ holiday_in_areas.is_active }}</td>
       
         
         <td>
@@ -80,7 +80,7 @@
           {%endif%}
         </td>
       </tr>
-      {% endif %}
+      
       {% empty %}
 
       <tr>

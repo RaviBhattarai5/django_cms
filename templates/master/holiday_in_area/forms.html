@@ -14,57 +14,27 @@
 
         <div class="col-lg-4 col-sm-6">
             <div class="mb-4">
-                <label for="{{ form.holiday_date.id_for_label }}">{{form.holiday_date.label}} <span class="text-danger">*</span></label>
-                {{form.holiday_date}}
-                {% if form.holiday_date.errors %}
+                <label for="{{ form.holiday_id.id_for_label }}">{{form.holiday_id.label}} <span class="text-danger">*</span></label>
+                {{form.holiday_id}}
+                {% if form.holiday_id.errors %}
                 <div class="invalid-feedback" style="display: block !important">
-                    {{ form.holiday_date.errors.as_text }}
+                    {{ form.holiday_id.errors.as_text }}
                 </div>
                 {% endif %}
             </div>
         </div>
         <div class="col-lg-4 col-sm-6">
             <div class="mb-4">
-                <label for="{{ form.holiday_name.id_for_label }}">{{form.to_date.label }}<span class="text-danger"> *</span></label>
-                {{form.to_date}}
-                {% if form.to_date.errors %}
+                <label for="{{ form.area_id.id_for_label }}">{{form.area_id.label }}<span class="text-danger"> *</span></label>
+                {{form.area_id}}
+                {% if form.area_id.errors %}
                 <div class="invalid-feedback" style="display: block !important">
-                    {{ form.to_date.errors.as_text }}
+                    {{ form.area_id.errors.as_text }}
                 </div>
                 {% endif %}
             </div>
         </div>
-        <div class="col-lg-4 col-sm-12">
-            <div class="mb-4">
-                <label for="{{ form.holiday_type.id_for_label }}">{{form.holiday_type.label}} <span class="text-danger">*</span></label>
-                {{form.holiday_type}}
-                {% if form.holiday_type.errors %}
-                <div class="invalid-feedback" style="display: block !important">
-                    {{ form.holiday_type.errors.as_text }}
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="col-lg-12 col-sm-6">
-            <div class="mb-4">
-                <label class="my-1 me-2" for="{{ form.holiday_name.id_for_label }}">{{form.holiday_name.label}} <span class="text-danger">*</span></label>
-                {{form.holiday_name}}
-                {% if form.holiday_name.errors %}
-                <div class="invalid-feedback" style="display: block !important">
-                    {{ form.holiday_name.errors.as_text }}
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-
-        <div class="col-lg-4 col-sm-6">
-            <div class="mb-4">
-                <label class="my-1 me-2" for="holiday_name">group <span class="text-danger">*</span></label>
-                {{form.group}}
-            </div>
-        </div>
+     
 
 
     </div>

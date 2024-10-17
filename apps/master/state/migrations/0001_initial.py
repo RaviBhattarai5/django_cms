@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('capitalName', models.CharField(max_length=100)),
                 ('disable', models.BooleanField(default=False)),
                 ('country', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='states', to='country.country')),
+                
             ],
         ),
     ]

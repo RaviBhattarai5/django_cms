@@ -13,8 +13,7 @@ class State(models.Model):
     updated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='updated_by', blank=True, null=True)  
     updated_at = models.DateTimeField(blank=True, null=True)
 
-    class Meta:
-        db_table = 'master_state'
+   
 
     def __str__(self):
         return self.state_name
