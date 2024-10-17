@@ -13,11 +13,6 @@ class State(models.Model):
     updated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='update', blank=True, null=True)  
     updated_at = models.DateTimeField(blank=True, null=True)
 
-<<<<<<< HEAD
-   
-=======
-
->>>>>>> 9a65824f0901d2030ba6ad8ffc9603a27a366508
 
     def __str__(self):
         return self.state_name

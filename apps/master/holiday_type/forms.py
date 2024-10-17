@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 9a65824f0901d2030ba6ad8ffc9603a27a366508
 from django import forms
 from .models import HolidaysType
 

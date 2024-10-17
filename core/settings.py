@@ -65,19 +65,15 @@ EXTERNAL_APPS=[
     'apps.master.customer',
     'apps.master.holiday',
     'apps.master.holiday_in_area',
-<<<<<<< HEAD
     'apps.master.area',
-<<<<<<< HEAD
+
     'apps.master.holiday_type',
     'apps.master.ecc',
     'apps.master.transporter',
-=======
     'apps.master.party',
->>>>>>> 928ae2adb95d1761e266b2e69198031eee13c3f0
-=======
-    'apps.master.holiday_type',
+
     
->>>>>>> 9a65824f0901d2030ba6ad8ffc9603a27a366508
+
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)

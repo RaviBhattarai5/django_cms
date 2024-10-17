@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 9a65824f0901d2030ba6ad8ffc9603a27a366508
 from django.db import models
 
 class HolidaysType(models.Model):
@@ -12,9 +8,5 @@ class HolidaysType(models.Model):
 
 
     def __str__(self):
-<<<<<<< HEAD
         return self.name
 
-=======
-        return self.name
->>>>>>> 9a65824f0901d2030ba6ad8ffc9603a27a366508
