@@ -45,35 +45,40 @@
     <thead>
       <tr>
         <th class="border-gray-200">#</th>
-        <th class="border-gray-200">From Date</th>
-        <th class="border-gray-200">To Date</th>
-        <th class="border-gray-200">Holiday Type</th>
-        <th class="border-gray-200">Holiday In Area</th>
+        <th class="border-gray-200">Area</th>
+        <th class="border-gray-200">FMS Stage</th>
+        <th class="border-gray-200">Contact Name</th>
+        <th class="border-gray-200">Contact No. </th>
+        <th class="border-gray-200">email_id </th>
+        <th class="border-gray-200">Is Active</th>
         <th class="border-gray-200">Action</th>
       </tr>
     </thead>
     <tbody>
-      {% for holiday in holidays %}
-      {% if not holiday.is_deleted%}
+      {% for fms_contact in fms_contacts%}
+      {% if not fms_contact.is_deleted%}
       <tr>
         <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
-        <td>{{ holiday.from_date}}</td>
-        <td>{{ holiday.to_date }}</td>
-        <td>{{ holiday.holiday_type }}</td>
-        <!-- <td>{{ holiday.holiday_in_area }}</td> -->
-    
+        <td>{{ fms_contact.area}}</td>
+        <td>{{ fms_contact.fms_stage }}</td>
+        <td>{{ fms_contact.contact_name }}</td>
+        <td>{{ fms_contact.contact_no}}</td>
+        <td>{{ fms_contact.email_id}}</td>
+        <td>{{ fms_contact.is_active }}</td>
+      
+        
         <td>
-          <!--check edit-->
+          <!--chek edit-->
           {% if can_edit %}
           <a
-            href="{% url 'holiday_update' holiday.id %}"
+            href="{% url 'fms_contact_update' fms_contact.id %}"
             class="btn btn-sm btn-gray-800"
             ><i class="fa fa-pencil-square"></i
           ></a>
           {%endif%} {% if can_delete %}
           <button
             type="button"
-            onclick="confirmDelete('/master-holidays/{{holiday.id}}/delete/')"
+            onclick="confirmDelete('/master-fms_contacts/{{fms_contact.id}}/delete/')"
             class="btn btn-sm btn-gray-800"
           >
             <i class="fa fa-times"></i>

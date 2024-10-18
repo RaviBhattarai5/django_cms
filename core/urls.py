@@ -43,5 +43,6 @@ urlpatterns = [
     path('master-fms-stage/', include('apps.master.fms_stage.urls')),
     path('master-fms-stage/', include('apps.master.fms_stage.urls')),
     path('master-links/', include('apps.master.links.urls')),
+    path('master-fms-contact/', include('apps.master.fms_contact.urls')),
 
 ] 

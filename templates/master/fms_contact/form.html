@@ -1,0 +1,95 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+
+<form method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="row mb-4">
+
+        <div class="col-lg-6 col-sm-6">
+            <div class="mb-4">
+                <label for="area">{{form.area.label}} <span class="text-danger">*</span></label>
+                {{form.area}}
+                {% if form.area.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.area.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+            <div class="mb-4">
+                <label for="fms_stage">{{form.fms_stage.label }}<span class="text-danger">*</span></label>
+                {{form.fms_stage}}
+                {% if form.fms_stage.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.fms_stage.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <div class="mb-4 mt-4">
+                <label for="contact_name">{{form.contact_name.label}}</label>
+                {{form.contact_name}}
+                {% if form.contact_name.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.contact_name.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="contact_no">{{form.contact_no.label}}</label>
+                {{form.contact_no}}
+                {% if form.contact_no.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.contact_no.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for=" email_id">{{form.email_id.label}}</label>
+                {{form.email_id}}
+                {% if form.email_id.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.email_id.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+  
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="is_active">{{form.is_active.label }}<span class="text-danger">*</span></label>
+                {{form.is_active}}
+                {% if form.is_active.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.is_active.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        <a class="btn btn-sm btn-gray-200" href="{%url 'product_list'%}">Cancel</a>
+    </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

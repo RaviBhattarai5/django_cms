@@ -34,6 +34,17 @@
                 {% endif %}
             </div>
         </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ form.is_active.id_for_label }}">{{form.is_active.label }}<span class="text-danger"> *</span></label>
+                {{form.is_active}}
+                {% if form.is_active.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.is_active.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
      
 
 

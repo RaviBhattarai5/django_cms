@@ -12,7 +12,7 @@ _menu_slug=''
 
 class HolidayListView(ListView):
     model = HolidayInArea
-    template_name = 'master/holiday/index.html'
+    template_name = 'master/holiday_in_area/index.html'
     context_object_name = 'holiday_in_areas'
     paginate_by = 50
     
@@ -31,7 +31,7 @@ class HolidayListView(ListView):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Holidays'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Holiday', 'url':'holiday_in_list'}]
-        context['new_url'] = 'holiday_create'
+        context['new_url'] = 'holiday_in_area_create'
         context['can_add'] = has_permission(self.request.user, 'group', 'Create')
         context['can_edit'] = has_permission(self.request.user, 'group', 'Edit')
         context['can_delete'] = has_permission(self.request.user, 'group', 'Delete')
@@ -42,7 +42,7 @@ class HolidayListView(ListView):
 class HolidayCreateView(CreateView):
     model = HolidayInArea
     form_class = HolidayInAreaForm
-    template_name = 'master/holiday/forms.html'
+    template_name = 'master/holiday_in_area/forms.html'
     success_url = reverse_lazy('holiday_in_list')
     
     @permission_required(_menu_slug,'Create')
@@ -60,13 +60,13 @@ class HolidayCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Groupe '
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'holiday_in_list'},{'name':'Create Holidays', 'url':'holiday_create'}]
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'holiday_in_list'},{'name':'Create Holidays', 'url':'holiday_in_area_create'}]
         return context
     
 class HolidayUpdateView(UpdateView):
     model = HolidayInArea
     form_class = HolidayInAreaForm
-    template_name = 'master/holiday/forms.html'
+    template_name = 'master/holiday_in_area/forms.html'
     success_url = reverse_lazy('holiday_in_list')
     
     @permission_required(_menu_slug,'Edit')
