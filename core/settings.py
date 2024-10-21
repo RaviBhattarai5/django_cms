@@ -67,6 +67,8 @@ EXTERNAL_APPS=[
     'apps.master.holiday_in_area',
     'apps.master.area',
     'apps.master.party',
+    
+    'apps.excel_import',
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)

@@ -4,8 +4,8 @@ install:
 	poetry install
 
 # command to run server --> make run-server
-.PHONY: run-server
-run-server:
+.PHONY: run server
+run server:
 	poetry run python manage.py runserver
 
 # command to make migrations --> make migrations
