@@ -1,0 +1,36 @@
+{% extends "layouts/base.html" %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
+{% endblock stylesheets %}
+<!-- Page Content  -->
+{% block content %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 500px;
+            margin-top: 100px;
+            text-align: center;
+        }
+        .btn-danger {
+            margin-right: 10px;
+        }
+    </style>
+    {% include 'includes/alertifyjs.html' %}
+    <div class="container">
+        <h2 class="text-danger">Confirm Deletion</h2>
+        <p>Are you sure you want to delete this Role?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url 'roles' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+
+    {% endblock content %}
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}

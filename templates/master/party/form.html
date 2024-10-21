@@ -1,0 +1,226 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+  <div class="row mb-4">
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="client_code"
+          >Client Code <span class="text-danger">*</span></label
+        >
+        {{form.client_code}} {% if form.client_code.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.client_code.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="contact_name"
+          >Contact Name <span class="text-danger">*</span></label
+        >
+        {{form.contact_name}} {% if form.contact_name.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.contact_name.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="company_name"
+          >Company Name <span class="text-danger">*</span></label
+        >
+        {{form.company_name}} {% if form.company_name.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.company_name.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="address">Address <span class="text-danger">*</span></label>
+        {{form.address}} {% if form.address.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.address.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="email">Email <span class="text-danger">*</span></label>
+        {{form.email}} {% if form.email.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.email.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="mobile_no"
+          >Mobile No <span class="text-danger">*</span></label
+        >
+        {{form.mobile_no}} {% if form.mobile_no.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.mobile_no.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="phone_no"
+          >Phone No <span class="text-danger">*</span></label
+        >
+        {{form.phone_no}} {% if form.phone_no.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.phone_no.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="state">State</label>
+        {{form.state}}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="city">City</label>
+        {{form.city}}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="pin_code">Pin Code<span class="text-danger">*</span></label>
+        {{form.pin_code}} {% if form.pin_code.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.pin_code.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="gst_no">Gst No. <span class="text-danger">*</span></label>
+        {{form.gst_no}} {% if form.gst_no.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.gst_no.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="pan_no">Pan No. <span class="text-danger">*</span></label>
+        {{form.pan_no}} {% if form.pan_no.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.pan_no.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="credit_limit"
+          >Credit Limit<span class="text-danger">*</span></label
+        >
+        {{form.credit_limit}} {% if form.credit_limit.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.credit_limit.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="credit_days"
+          >Credit Days<span class="text-danger">*</span></label
+        >
+        {{form.credit_days}} {% if form.credit_days.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.credit_days.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="area">Area</label>
+        {{form.area}}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="payment_mode">Payment Mode</label>
+        {{form.payment_mode}}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="adv_pdc_cdc">Payment Term</label>
+        {{form.adv_pdc_cdc}}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label class="my-1 me-2" for="security_cheque">Security Cheque</label>
+        {{form.security_cheque}}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="username"
+          >Username<span class="text-danger">*</span></label
+        >
+        {{form.username}} {% if form.username.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.username.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="password"
+          >Password<span class="text-danger">*</span></label
+        >
+        {{form.password}} {% if form.password.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.password.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="position">Disable</label>
+        {{form.disable}} {% if form.disable.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.disable.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'party_list'%}">Cancel</a>
+  </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

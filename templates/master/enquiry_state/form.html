@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+  <div class="row mb-4">
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="title">Title <span class="text-danger">*</span></label>
+        {{form.title}} {% if form.title.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.title.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <div class="form-check">
+          <label class="form-check-label" for="disable"> Disable </label>
+          {{form.disable}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'enquiry_state_list'%}"
+      >Cancel</a
+    >
+  </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

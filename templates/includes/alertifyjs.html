@@ -1,0 +1,45 @@
+{% load static %}
+
+<head>
+    <!-- Include Alertify CSS and JS -->
+    <link rel="stylesheet" href="{% static 'path/to/alertify.min.css' %}">
+    <link rel="stylesheet" href="{% static 'path/to/themes/alertify.default.min.css' %}">
+    <script src="{% static 'path/to/alertify.min.js' %}"></script>
+</head>
+<body>
+    <!-- Hidden element to hold Django messages in JSON format -->
+    <div id="django-messages" data-messages='[
+        {% for flashmsg in messages %}
+            {
+                "level": "{{ flashmsg.tags }}", 
+                "message": "{{ flashmsg|escapejs }}"
+            }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ]'></div>
+
+    <!-- Your content goes here -->
+
+    <script>
+        // Retrieve messages from the hidden div's data attribute
+        const messagesData = document.getElementById('django-messages').getAttribute('data-messages');
+        const messages = JSON.parse(messagesData);
+
+        // Configure the position of the alertify notifications
+        alertify.set('notifier', 'position', 'top-right');
+
+        // Loop through the messages and display them based on their type
+        messages.forEach(function(msg) {
+            if (msg.level.includes('success')) {
+                alertify.success(msg.message); // Success message
+            } else if (msg.level.includes('error')) {
+                alertify.error(msg.message); // Error message
+            } else if (msg.level.includes('warning')) {
+                alertify.warning(msg.message); // Warning message
+            } else if (msg.level.includes('info')) {
+                alertify.message(msg.message); // Info message
+            } else {
+                alertify.message(msg.message); // Default message
+            }
+        });
+    </script>
+</body>
