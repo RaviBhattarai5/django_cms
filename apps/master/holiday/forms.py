@@ -9,7 +9,7 @@ class HolidaysForm(forms.ModelForm):
             'holiday_date': forms.DateInput(attrs={'type': 'date', 'class':'form-control'}), 
             'from_date': forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
             'to_date': forms.DateInput(attrs={'type': 'date', 'class':'form-control'}),
-            'holiday_type':forms.Select(attrs={'class':'form-control'}),
+            'holiday_type':forms.Select(attrs={'class':'form-select'}),
             'holiday_name':forms.TextInput(attrs={'class':'form-control'}),
         }
         labels = {

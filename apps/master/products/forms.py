@@ -31,9 +31,9 @@ class ProductForm(forms.ModelForm):
         widgets = {
             'product_name': forms.TextInput(attrs={'class': 'form-control'}),
             'product_code': forms.TextInput(attrs={'class': 'form-control'}),
-            'serial_status': forms.Select(attrs={'class': 'form-control'}),
+            'serial_status': forms.Select(attrs={'class': 'form-select'}),
             'moq': forms.NumberInput(attrs={'class': 'form-control'}),
-            'group': forms.Select(attrs={'class': 'form-control'}),
+            'group': forms.Select(attrs={'class': 'form-select'}),
             'description': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
             'selling_price': forms.NumberInput(attrs={'step': 0.01, 'class': 'form-control'}),
             'max_selling_price': forms.NumberInput(attrs={'step': 0.01, 'class': 'form-control'}),

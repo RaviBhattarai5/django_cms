@@ -14,8 +14,8 @@ class AreaForm(forms.ModelForm):
             'gst_no': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter GST Number'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Address'}),
             'area_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Area Code'}),
-            'state': forms.Select(attrs={'class': 'form-control'}),  
-            'city': forms.Select(attrs={'class': 'form-control'}),
+            'state': forms.Select(attrs={'class': 'form-select'}),  
+            'city': forms.Select(attrs={'class': 'form-select'}),
             'pin_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Pin Code'}),
             'disable': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }

@@ -13,8 +13,8 @@ class MasterBranchForm(forms.ModelForm):
             'disable': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter branch code'}),
             'brAddress': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter branch address'}),
-            'state': forms.Select(attrs={'class': 'form-control'}),  # Dropdown for selecting state
-            'brType': forms.Select(attrs={'class': 'form-control'}),  # Dropdown for branch type (HO or BR)
+            'state': forms.Select(attrs={'class': 'form-select'}),  # Dropdown for selecting state
+            'brType': forms.Select(attrs={'class': 'form-select'}),  # Dropdown for branch type (HO or BR)
             'isDealer': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'contactNo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter contact number'}),
             'isOTPValidation': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
