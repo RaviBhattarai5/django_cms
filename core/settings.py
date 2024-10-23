@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',    
+    'rest_framework',
+    'corsheaders',
+    'webpack_loader',
 ]
 
 EXTERNAL_APPS=[
@@ -69,8 +72,14 @@ EXTERNAL_APPS=[
     'apps.master.party',
     
     'apps.excel_import',
+   
 ]
-
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'react_cms/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'react_cms', 'webpack-stats.json'),
+    }
+}
 INSTALLED_APPS.extend(EXTERNAL_APPS)
 
 MIDDLEWARE = [
@@ -83,8 +92,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'core.middleware.RedirectIfNotLoggedInMiddleware',
-    
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
 
 ROOT_URLCONF = 'core.urls'
 TEMPLATE_DIR = os.path.join(CORE_DIR, "templates")  # ROOT dir for templates
@@ -163,6 +181,7 @@ STATIC_URL = 'static/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(CORE_DIR, 'static'),
+    os.path.join(CORE_DIR, 'react_cms/static'),
 )
 
 # Default primary key field type

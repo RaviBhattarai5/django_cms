@@ -19,8 +19,14 @@ def import_excel(request):
             dataset = Dataset()
             imported_data = dataset.load(excel_file.read(), format='xlsx')
 
-            result = import_test_resource.import_data(dataset, dry_run=True)  # Test the data import
+            print(imported_data)
+            for row in imported_data.dict:
+                first_name = row.get('first_name') 
+                last_name = row.get('last_name')
+                
+                print(row)
             
+            result = import_test_resource.import_data(dataset, dry_run=True)  # Test the data import
             if not result.has_errors():
                 import_test_resource.import_data(dataset, dry_run=False)  # Actually import now
                 messages.success(request, 'Excel file has been imported successfully.')

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,5 +35,6 @@ urlpatterns = [
     path('master-holiday-in-area/', include('apps.master.holiday_in_area.urls')),
     path('area/',include('apps.master.area.urls')),
     path('party/',include('apps.master.party.urls')),
-    path('import-excel/',include('apps.excel_import.urls'))
-] 
+    path('import-excel/',include('apps.excel_import.urls')),
+    path('orders/', TemplateView.as_view(template_name='index.html')),
+]   

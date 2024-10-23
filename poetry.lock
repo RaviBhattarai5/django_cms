@@ -52,6 +52,21 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-cors-headers"
+version = "4.5.0"
+description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "django_cors_headers-4.5.0-py3-none-any.whl", hash = "sha256:28c1ded847aa70208798de3e42422a782f427b8b720e8d7319d34b654b5978e6"},
+    {file = "django_cors_headers-4.5.0.tar.gz", hash = "sha256:6c01a85cf1ec779a7bde621db853aa3ce5c065a5ba8e27df7a9f9e8dac310f4f"},
+]
+
+[package.dependencies]
+asgiref = ">=3.6"
+django = ">=3.2"
+
+[[package]]
 name = "django-debug-toolbar"
 version = "4.4.6"
 description = "A configurable set of panels that display various debug information about the current request/response."
@@ -125,6 +140,31 @@ six = ">=1.12"
 [package.extras]
 docs = ["sphinx (>=1.8.4)"]
 test = ["coverage[toml] (==5.0.3)", "flake8 (==3.7.9)", "flake8-blind-except (==0.1.1)", "flake8-debugger (==3.1.0)", "freezegun (==0.3.15)", "isort[pyproject] (==4.3.21)", "pytest (==5.3.5)", "pytest-cov (==2.8.1)", "pytest-django (==3.8.0)"]
+
+[[package]]
+name = "django-webpack-loader"
+version = "3.1.1"
+description = "Transparently use webpack with django"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-webpack-loader-3.1.1.tar.gz", hash = "sha256:f11b79700d1bfc1299131bdf4ba479c1ec200f83a1400e1a2feb5c2ba7b6f8c4"},
+    {file = "django_webpack_loader-3.1.1-py2.py3-none-any.whl", hash = "sha256:15c05cb685b113c5e6f947efa8ee3888a03c2969a2dd0da4c7610b3e695f67ba"},
+]
+
+[[package]]
+name = "djangorestframework"
+version = "3.15.2"
+description = "Web APIs for Django, made easy."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "djangorestframework-3.15.2-py3-none-any.whl", hash = "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20"},
+    {file = "djangorestframework-3.15.2.tar.gz", hash = "sha256:36fe88cd2d6c6bec23dca9804bab2ba5517a8bb9d8f47ebc68981b56840107ad"},
+]
+
+[package.dependencies]
+django = ">=4.2"
 
 [[package]]
 name = "et-xmlfile"
@@ -306,4 +346,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "af343d9e21ed6fd18369d5f8d268eae8c67e3d48b52a6e205988246077e7de6e"
+content-hash = "dc0b38c547d556fa1abe56c110b9df61ed766fac4b4b1300d24d7fc709693463"
