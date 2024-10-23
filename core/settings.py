@@ -110,7 +110,7 @@ TEMPLATE_DIR = os.path.join(CORE_DIR, "templates")  # ROOT dir for templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR, os.path.join(CORE_DIR, 'react_cms/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +124,7 @@ TEMPLATES = [
     },
 ]
 
+print(os.path.join(CORE_DIR, 'react_cms/build'))
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
@@ -181,7 +182,7 @@ STATIC_URL = 'static/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(CORE_DIR, 'static'),
-    os.path.join(CORE_DIR, 'react_cms/static'),
+    os.path.join(BASE_DIR, 'react_cms/build/static'),
 )
 
 # Default primary key field type

@@ -36,5 +36,6 @@ urlpatterns = [
     path('area/',include('apps.master.area.urls')),
     path('party/',include('apps.master.party.urls')),
     path('import-excel/',include('apps.excel_import.urls')),
-    path('orders/', TemplateView.as_view(template_name='index.html')),
+    
+    path('<path:path>/', TemplateView.as_view(template_name='index.html')),
 ]   

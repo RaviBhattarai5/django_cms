@@ -145,11 +145,21 @@
   </div>
 </nav>
 
+{% comment %} <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".nav-item.active")[0].closest("div").classList.add("show");
+  });
+</script> {% endcomment %}
+{% comment %} optimized code re.. {% endcomment %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    document
-      .querySelectorAll(".nav-item.active")[0]
-      .closest("div")
-      .classList.add("show");
+    const activeNavItem = document.querySelector(".nav-item.active");
+    
+    if (activeNavItem) {
+      const parentDiv = activeNavItem.closest("div");
+      if (parentDiv) {
+        parentDiv.classList.add("show");
+      }
+    }
   });
 </script>
