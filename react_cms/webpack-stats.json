@@ -1,0 +1,16 @@
+{
+  "status": "done",
+  "assets": {
+    "main.js": {
+      "name": "main.js",
+      "path": "/home/heisen/projects/django/django_cms/react_cms/static/react_cms/main.js",
+      "publicPath": "http://localhost:3000/static/react_cms/main.js"
+    }
+  },
+  "chunks": {
+    "main": [
+      "main.js"
+    ]
+  },
+  "publicPath": "http://localhost:3000/static/react_cms/"
+}
