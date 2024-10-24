@@ -9,7 +9,7 @@ from utils.permissions import has_permission
 from decorators.decorators import permission_required
 from django.utils import timezone
 
-_Menu_Slug='fms_stage'
+_Menu_Slug='fms-stage'
 class FmsStageListView(ListView):
     model = FmsStage
     template_name = 'master/fms_stage/index.html'
@@ -67,7 +67,7 @@ class FmsStageCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Create FMS Stage'
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'FMS_Stage', 'url':'fms_stage_list'},{'name':'Create FMS stage', 'url':'fms_stage_create'}]
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'FMS_Stage', 'url':'fms_stage_list'},{'name':'Create FMS stages', 'url':'fms_stage_create'}]
         return context
     
 class FmsStageUpdateView(UpdateView):

@@ -10,6 +10,6 @@ class EccTransactionForm(forms.ModelForm):
         widgets = {
             'transporter': forms.Select(attrs={'class': 'form-control'}),
             'ecc': forms.Select(attrs={'class': 'form-control'}),
-            'amount': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'amount': forms.NumberInput(attrs={'class': 'form-control'}),
             'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }

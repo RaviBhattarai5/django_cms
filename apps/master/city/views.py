@@ -45,9 +45,9 @@ class CityListView(ListView):
             {"name": "City", "url": "city_list"},
         ]
         context["new_url"] = "city_create"
-        context["can_add"] = has_permission(self.request.user, "menu", "Create")
-        context["can_edit"] = has_permission(self.request.user, "menu", "Edit")
-        context["can_delete"] = has_permission(self.request.user, "menu", "Delete")
+        context["can_add"] = has_permission(self.request.user, "city", "Create")
+        context["can_edit"] = has_permission(self.request.user, "city", "Edit")
+        context["can_delete"] = has_permission(self.request.user, "city", "Delete")
 
         context = arrange_pagination(context)
         return context

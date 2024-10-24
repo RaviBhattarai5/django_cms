@@ -9,7 +9,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
-_ProductCategory_slug='product_category'
+_ProductCategory_slug='product-category'
 
 class ProductCategoryListView(ListView):
     model = ProdutCategory

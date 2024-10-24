@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+<!-- Index Top Action Btn  -->
+{% block index_action %}
+<!-- Action Template  -->
+{% include 'includes/index/action.html' %} {%endblock index_action%}
+<!-- Page Content  -->
+{% block content %}
+<div class="table-settings mb-4">
+    <div class="row align-items-center justify-content-between">
+        <div class="col col-md-6 col-lg-3 col-xl-4">
+            <form method="GET" action="">
+                <div class="input-group me-2 me-lg-3 fmxw-400">
+                    <span class="input-group-text" id="basic-addon1"><svg class="icon icon-xs text-gray-600"
+                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd"></path>
+                        </svg> </span><input type="search" name="title" value="{{ request.GET.title }}"
+                        class="form-control" id="exampleInputIconLeft" placeholder="Search State" aria-label="Search" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="border-0 shadow table-wrapper table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="border-gray-200">#</th>
+                <th class="border-gray-200">Enquiry Stage Name</th>
+                <th class="border-gray-200">Serial No.</th>
+                <th class="border-gray-200">Is Active</th>
+                <th class="border-gray-200">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enquire_stage in enquire_stages %}
+            <tr>
+                <td>{{ forloop.counter0|add:page_obj.start_index}}</td>
+                <!-- <td>{% if enquire_stage.state %} {{ enquire_stage.state }} {% else %} {%endif%}</td> -->
+                <td>{{ enquire_stage.enquiry_stage_name }}</td>
+                <td>{{ enquire_stage.serial_no  }}</td>
+                <td>{{ enquire_stage.is_active}}</td>
+                <td>
+                    <!--chek edit-->
+                    {% if can_edit %}
+                    <a href="{% url 'enquiry_stage_update' enquire_stage.id %}" class="btn btn-sm btn-gray-800"><i
+                            class="fa fa-pencil-square"></i></a>
+                    {%endif%} {% if can_delete %}
+                    <button type="button" onclick="confirmDelete('/master-enquiry-stage/{{enquire_stage.id}}/delete/')"
+                        class="btn btn-sm btn-gray-800">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    {%endif%}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td class="text-center" colspan="7">No items recorded.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {%include 'includes/index/pagination.html'%}
+    <form method="POST" id="deleteForm">
+        {% csrf_token %}
+        <input type="hidden" name="_method" value="DELETE" />
+    </form>
+</div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/confirm-delete.js'%}"></script>
+{% endblock javascripts %}

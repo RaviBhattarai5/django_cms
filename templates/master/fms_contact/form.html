@@ -13,7 +13,7 @@
 
     <div class="row mb-4">
 
-        <div class="col-lg-6 col-sm-6">
+        <div class="col-lg-4 col-sm-6">
             <div class="mb-4">
                 <label for="area">{{form.area.label}} <span class="text-danger">*</span></label>
                 {{form.area}}
@@ -24,7 +24,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-lg-6 col-sm-6">
+        <div class="col-lg-4 col-sm-6">
             <div class="mb-4">
                 <label for="fms_stage">{{form.fms_stage.label }}<span class="text-danger">*</span></label>
                 {{form.fms_stage}}
@@ -35,8 +35,8 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-lg-12 col-sm-12">
-            <div class="mb-4 mt-4">
+        <div class="col-lg-4 col-sm-12">
+            <div class="mb-4">
                 <label for="contact_name">{{form.contact_name.label}}</label>
                 {{form.contact_name}}
                 {% if form.contact_name.errors %}
@@ -85,7 +85,7 @@
     </div>
     <div class="mb-4">
         <button class="btn btn-sm btn-primary" type="submit">Save</button>
-        <a class="btn btn-sm btn-gray-200" href="{%url 'product_list'%}">Cancel</a>
+        <a class="btn btn-sm btn-gray-200" href="{%url 'fms_contact_list'%}">Cancel</a>
     </div>
 </form>
 {% endblock content %}

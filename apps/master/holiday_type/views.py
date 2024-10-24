@@ -9,7 +9,7 @@ from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
 from django.utils import timezone
-_menu_slug=' '
+_menu_slug='holiday-type'
 class HolidayTypeListView(ListView):
     model = HolidaysType
     template_name = 'master/holiday_type/index.html'

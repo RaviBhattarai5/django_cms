@@ -1,128 +1,212 @@
-{% extends "layouts/base.html" %} {%load static%}
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %} {% endblock stylesheets %}
+{% extends "layouts/base.html" %}
+{% load static %}
 
-<!-- Page Content  -->
-{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<!-- Specific Page CSS goes HERE -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+<!-- Page Content -->
+{% block content %}
+{% for message in messages %}
+    <div class="alert alert-info">{{ message }}</div>
+{% endfor %}
+
+
+
+<!-- ECC Transactions Formset -->
+<!-- {{transporter_form}}
+
+{{ formset.management_form }}
+{% for form in formset %}
+  {{form}}
+{% endfor %} -->
+
 <form method="post">
-  {% csrf_token %} {% if form.non_field_errors %}
-  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
-  {% endif %}
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
 
-  <div class="row mb-4">
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label class="my-1 me-2" for="categoryId">{{form.area.label}} <span class="text-danger">*</span></label>
-        {{form.area}}
-      </div>
-    </div>
+    <div class="row mb-4">
+        <!-- Transporter Form Fields -->
+        <h2>Transporter Information</h2>
 
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.transporter_name.label}}<span class="text-danger">*</span></label>
-        {{form.transporter_name}} {% if form.transporter_name.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.transporter_name.errors.as_text }}
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.area.id_for_label }}">{{ transporter_form.area.label }} <span class="text-danger">*</span></label>
+                {{ transporter_form.area }}
+                {% if transporter_form.area.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.area.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
         </div>
-        {% endif %}
-      </div>
-    </div>
 
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.gst_no.label}}<span class="text-danger">*</span></label>
-        {{form.gst_no}} {% if form.gst_no.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.gst_no.errors.as_text }}
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.transporter_name.id_for_label }}">{{ transporter_form.transporter_name.label }} <span class="text-danger">*</span></label>
+                {{ transporter_form.transporter_name }}
+                {% if transporter_form.transporter_name.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.transporter_name.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
         </div>
-        {% endif %}
-      </div>
-    </div>
 
-
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.mobile_no1.label}}<span class="text-danger">*</span></label>
-        {{form.mobile_no1}} {% if form.mobile_no1.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.mobile_no1.errors.as_text }}
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.gst_no.id_for_label }}">{{ transporter_form.gst_no.label }}</label>
+                {{ transporter_form.gst_no }}
+                {% if transporter_form.gst_no.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.gst_no.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
         </div>
-        {% endif %}
-      </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.mobile_no1.id_for_label }}">{{ transporter_form.mobile_no1.label }} <span class="text-danger">*</span></label>
+                {{ transporter_form.mobile_no1 }}
+                {% if transporter_form.mobile_no1.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.mobile_no1.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.mobile_no2.id_for_label }}">{{ transporter_form.mobile_no2.label }} (Optional)</label>
+                {{ transporter_form.mobile_no2 }}
+                {% if transporter_form.mobile_no2.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.mobile_no2.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.tracking_url.id_for_label }}">{{ transporter_form.tracking_url.label }}</label>
+                {{ transporter_form.tracking_url }}
+                {% if transporter_form.tracking_url.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.tracking_url.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.min_weight_charge.id_for_label }}">{{ transporter_form.min_weight_charge.label }}</label>
+                {{ transporter_form.min_weight_charge }}
+                {% if transporter_form.min_weight_charge.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.min_weight_charge.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.min_weight.id_for_label }}">{{ transporter_form.min_weight.label }}</label>
+                {{ transporter_form.min_weight }}
+                {% if transporter_form.min_weight.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.min_weight.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.min_charge.id_for_label }}">{{ transporter_form.min_charge.label }}</label>
+                {{ transporter_form.min_charge }}
+                {% if transporter_form.min_charge.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.min_charge.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="{{ transporter_form.tpt_charge.id_for_label }}">{{ transporter_form.tpt_charge.label }}</label>
+                {{ transporter_form.tpt_charge }}
+                {% if transporter_form.tpt_charge.errors %}
+                    <div class="invalid-feedback" style="display: block !important">
+                        {{ transporter_form.tpt_charge.errors.as_text }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.mobile_no2.label}}<span class="text-danger">*</span></label>
-        {{form.mobile_no2}} {% if form.mobile_no2.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.mobile_no2.errors.as_text }}
-        </div>
-        {% endif %}
-      </div>
-    </div>
+    <!-- ECC Transactions Formset -->
+    <h2>Ecc Transactions</h2>
+    {{ formset.management_form }}
+    {% for form in formset %}
+        <div class="ecc-transaction mb-4">
+            <!-- <h3>Ecc Transaction {{ forloop.counter }}</h3> -->
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="mb-4">
+                        <label for="{{ form.ecc.id_for_label }}">{{ form.transporter.label }} <span class="text-danger">*</span></label>
+                        {{ form.transporter }}
+                        {% if form.transporter.errors %}
+                            <div class="invalid-feedback" style="display: block !important">
+                                {{ form.transporter.errors.as_text }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="mb-4">
+                        <label for="{{ form.ecc.id_for_label }}">{{ form.ecc.label }} <span class="text-danger">*</span></label>
+                        {{ form.ecc }}
+                        {% if form.ecc.errors %}
+                            <div class="invalid-feedback" style="display: block !important">
+                                {{ form.ecc.errors.as_text }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
 
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.tracking_url.label}}<span class="text-danger">*</span></label>
-        {{form.tracking_url}} {% if form.tracking_url.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.tracking_url.errors.as_text }}
+                <div class="col-lg-4 col-sm-6">
+                    <div class="mb-4">
+                        <label for="{{ form.amount.id_for_label }}">{{ form.amount.label }} <span class="text-danger">*</span></label>
+                        {{ form.amount }}
+                        {% if form.amount.errors %}
+                            <div class="invalid-feedback" style="display: block !important">
+                                {{ form.amount.errors.as_text }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
-        {% endif %}
-      </div>
-    </div>
+    {% endfor %}
 
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.tpt_charge.label}}<span class="text-danger">*</span></label>
-        {{form.tpt_charge }} {% if form.tpt_charge.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.tpt_charge.errors.as_text }}
-        </div>
-        {% endif %}
-      </div>
+    <div class="mb-4">
+        <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        <a class="btn btn-sm btn-gray-200" href="{% url 'transporter_list' %}">Cancel</a>
     </div>
-
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.min_weight.label}}<span class="text-danger">*</span></label>
-        {{form.min_weight }} {% if form.min_weight.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.min_weight.errors.as_text }}
-        </div>
-        {% endif %}
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4">
-        <label for="groupName">{{form.min_weight_charge.label}}<span class="text-danger">*</span></label>
-        {{form.min_weight_charge }} {% if form.min_weight_charge.errors %}
-        <div class="invalid-feedback" style="display: block !important">
-          {{ form.min_weight_charge.errors.as_text }}
-        </div>
-        {% endif %}
-      </div>
-    </div>
-
-  
-    <div class="col-lg-4 col-sm-6">
-      <div class="mb-4 mt-4">
-        <div class="form-check ">
-          <label class="form-check-label" for="is_active"> {{form.is_active.label}} </label>
-          {{form.is_active}}
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mb-4">
-    <button class="btn btn-sm btn-primary" type="submit">Save</button>
-    <a class="btn btn-sm btn-gray-200" href="{%url 'menu_list'%}">Cancle</a>
-  </div>
 </form>
+
 {% endblock content %}
-<!-- Specific Page JS goes HERE  -->
+
+<!-- Specific Page JS goes HERE -->
 {% block javascripts %}
-<script src="{%static 'assets/js/form-error.js'%}"></script>
+<script src="{% static 'assets/js/form-error.js' %}"></script>
 {% endblock javascripts %}

@@ -36,13 +36,17 @@ urlpatterns = [
     path('master-holiday-Type/', include('apps.master.holiday_type.urls')),
     path('area/',include('apps.master.area.urls')),
     path('ecc/',include('apps.master.ecc.urls')),
-    path('transporter/',include('apps.master.transporter.urls')),
+    path('master-tpl-ecc-charge/',include('apps.master.tpl_ecc_charge.urls')),
     path('party/',include('apps.master.party.urls')),
+    path('master-transporter/',include('apps.master.transporter.urls')),
     path('master-holiday-type/', include('apps.master.holiday_type.urls')),
     path('master-lead-source/', include('apps.master.lead_source.urls')),
     path('master-fms-stage/', include('apps.master.fms_stage.urls')),
     path('master-fms-stage/', include('apps.master.fms_stage.urls')),
     path('master-links/', include('apps.master.links.urls')),
     path('master-fms-contact/', include('apps.master.fms_contact.urls')),
+    path('master-transporter-area/', include('apps.master.transporter_area.urls')),
+    path('master-enquiry-stage/', include('apps.master.enquiry_stage.urls')),
+    path('master-enquiry-status/', include('apps.master.enquiry_status.urls')),
 
 ] 

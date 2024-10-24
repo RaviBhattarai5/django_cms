@@ -1,0 +1,81 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }} <span class="text-danger">*</span></div>
+    {% endif %}
+
+    <div class="row mb-4">
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="case_study">{{ form.case_study.label }} <span class="text-danger">*</span></label>
+                {{form.case_study}}
+                {% if form.case_study.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.case_study.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="enquiry_status_name">{{form.enquiry_status_name.label}} <span class="text-danger">*</span></label>
+                {{form.enquiry_status_name}}
+                {% if form.enquiry_status_name.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.enquiry_status_name.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="enquiry_stage_id">{{ form.enquiry_stage_id.label }} <span class="text-danger">*</span></label>
+                {{form.enquiry_stage_id}}
+                {% if form.enquiry_stage_id.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.enquiry_stage_id.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="remarks">{{ form.remarks.label }} <span class="text-danger">*</span></label>
+                {{form.remarks}}
+                {% if form.remarks.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.remarks.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label for="is_active"> {{ form.is_active.label }} <span class="text-danger">*</span></label>
+                {{form.is_active}}
+                {% if form.is_active.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.is_active.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        <a class="btn btn-sm btn-gray-200" href="{%url 'enquire_status_list'%}">Cancel</a>
+    </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

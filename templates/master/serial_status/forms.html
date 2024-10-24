@@ -12,7 +12,7 @@
   <div class="row mb-4">
     <div class="col-lg-4 col-sm-6">
       <div class="mb-4">
-        <label class="my-1 me-2" for="serialStatus">serialStatus</label>
+        <label class="my-1 me-2" for="serialStatus">serialStatus <span class="text-danger">*</span></label>
         {{form.serialStatus}}
       </div>
     </div>
@@ -20,7 +20,7 @@
 
   <div class="mb-4">
     <button class="btn btn-sm btn-primary" type="submit">Save</button>
-    <a class="btn btn-sm btn-gray-200" href="{%url 'serial_status_list'%}">Cancle</a>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'serial_status_list'%}">Cancel</a>
   </div>
 </form>
 {% endblock content %}

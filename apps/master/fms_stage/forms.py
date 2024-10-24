@@ -1,6 +1,6 @@
 from django import forms
 from .models import FmsStage
-
+from utils.common import set_picklist_querysets
 class FmsStageForm(forms.ModelForm):
     class Meta:
         model = FmsStage
@@ -19,3 +19,10 @@ class FmsStageForm(forms.ModelForm):
             'updated_by': forms.Select(attrs={'class': 'form-control'}),
             'deleted_by': forms.Select(attrs={'class': 'form-control'}),
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        fields_to_set = {
+            "tat_mode": "tat_mode",
+        }
+        set_picklist_querysets(self.fields, fields_to_set)
+       

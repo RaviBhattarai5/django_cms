@@ -9,7 +9,7 @@ from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
 from django.utils import timezone
-_menu_slug='master_group'
+_menu_slug='group'
 class GroupListView(ListView):
     model = MasterGroup
     template_name = 'master/group/index.html'
@@ -67,7 +67,7 @@ class GroupCreateView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Groupe '
+        context['page_title'] = 'Group '
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'group_list'},{'name':'Create Group', 'url':'group_create'}]
         return context
     
@@ -90,7 +90,7 @@ class GroupUpdateView(UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Groupte Menu'
+        context['page_title'] = 'Group'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'group_list'},{'name':'Update Group'}]
         return context
     

@@ -14,7 +14,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
-MENU_SLUG = " "
+MENU_SLUG = "ecc"
 
 class ECCListView(ListView):
     model = ECCMaster
@@ -41,9 +41,9 @@ class ECCListView(ListView):
             {"name": "ECC Master", "url": "ecc_list"},
         ]
         context["new_url"] = "ecc_create"
-        context["can_add"] = has_permission(self.request.user, "menu", "Create")
-        context["can_edit"] = has_permission(self.request.user, "menu", "Edit")
-        context["can_delete"] = has_permission(self.request.user, "menu", "Delete")
+        context["can_add"] = has_permission(self.request.user, "ecc", "Create")
+        context["can_edit"] = has_permission(self.request.user, "ecc", "Edit")
+        context["can_delete"] = has_permission(self.request.user, "ecc", "Delete")
 
         context = arrange_pagination(context)
         return context

@@ -6,6 +6,6 @@ class PickList(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     is_active = models.BooleanField(default=True)
     serial_no = models.PositiveIntegerField()  
-
+   
     def __str__(self):
         return self.pick_list_name

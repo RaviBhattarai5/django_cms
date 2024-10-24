@@ -9,7 +9,7 @@ from utils.permissions import has_permission
 from decorators.decorators import permission_required
 from django.utils import timezone
 
-_menu_slug='pick_list'
+_menu_slug='pick-list'
 class PickListView(ListView):
     model = PickList
     template_name = 'master/pick_list/index.html'

@@ -9,7 +9,7 @@ from utils.permissions import has_permission
 from decorators.decorators import permission_required
 from django.utils import timezone
 
-_Menu_Slug='FmsContacts'
+_Menu_Slug='fms-contact'
 class FmsContactListView(ListView):
     model = FmsContact
     template_name = 'master/fms_contact/index.html'

@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',    
+    'home',  
+    'table',
+     'django_tables2',  
 ]
 
 EXTERNAL_APPS=[
@@ -76,9 +78,10 @@ EXTERNAL_APPS=[
     'apps.master.fms_stage',
     'apps.master.links',
     'apps.master.fms_contact',
-
-    
-
+    'apps.master.tpl_ecc_charge',
+    'apps.master.transporter_area',
+    'apps.master.enquiry_stage',
+    'apps.master.enquiry_status',
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)

@@ -8,7 +8,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 from django.utils import timezone
-_menu_slug=''
+_menu_slug='holidays'
 
 class HolidayListView(ListView):
     model = Holidays
@@ -59,8 +59,8 @@ class HolidayCreateView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Groupe '
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'holiday_list'},{'name':'Create Holidays', 'url':'holiday_create'}]
+        context['page_title'] = 'Holiday '
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Holiday', 'url':'holiday_list'},{'name':'Create Holidays', 'url':'holiday_create'}]
         return context
     
 class HolidayUpdateView(UpdateView):
@@ -83,7 +83,7 @@ class HolidayUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Holidays'
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Menu', 'url':'holiday_list'},{'name':'Update Holidays'}]
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Holiday', 'url':'holiday_list'},{'name':'Update Holidays'}]
         return context
     
 class HolidayDeleteView(DeleteView):

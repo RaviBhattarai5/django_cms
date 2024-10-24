@@ -7,4 +7,4 @@ class ECCMaster(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.serial_no}: {self.weight_from} - {self.weight_to} (Active: {self.is_active})"
+        return f"(serial No -{self.serial_no}):(weight_From - {self.weight_from}) - (Weight_To - {self.weight_to}) "

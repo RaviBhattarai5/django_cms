@@ -8,7 +8,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 from django.utils import timezone
-_menu_slug=''
+_menu_slug='holiday-in-area'
 
 class HolidayListView(ListView):
     model = HolidayInArea
@@ -32,9 +32,9 @@ class HolidayListView(ListView):
         context['page_title'] = 'Holidays'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Holiday', 'url':'holiday_in_list'}]
         context['new_url'] = 'holiday_in_area_create'
-        context['can_add'] = has_permission(self.request.user, 'group', 'Create')
-        context['can_edit'] = has_permission(self.request.user, 'group', 'Edit')
-        context['can_delete'] = has_permission(self.request.user, 'group', 'Delete')
+        context['can_add'] = has_permission(self.request.user, 'holiday_in_area', 'Create')
+        context['can_edit'] = has_permission(self.request.user, 'holiday_in_area', 'Edit')
+        context['can_delete'] = has_permission(self.request.user, 'holiday_in_area', 'Delete')
         
         context = arrange_pagination(context)
         return context
@@ -95,11 +95,11 @@ class HolidayDeleteView(DeleteView):
         return super().dispatch(*args, **kwargs)
     
     def post(self, request, *args, **kwargs):
-        group = self.get_object()
-        group.deleted_by = self.request.user  
-        group.deleted_date = timezone.now()   
-        group.is_deleted = True               
-        group.save()
+        holiday_in_area = self.get_object()
+        holiday_in_area.deleted_by = self.request.user  
+        holiday_in_area.deleted_date = timezone.now()   
+        holiday_in_area.is_deleted = True               
+        holiday_in_area.save()
 
         messages.success(self.request, 'Group deleted successfully')
         return redirect(self.success_url)

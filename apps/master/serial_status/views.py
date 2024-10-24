@@ -8,7 +8,9 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
-_menu_slug='serial_status'
+_menu_slug='serial-status'
+
+#! LIST VIEW Serial Status
 class SerialStatusListView(ListView):
     model = SerialStatus
     template_name = 'master/serial_status/index.html'
@@ -28,7 +30,7 @@ class SerialStatusListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Group'
+        context['page_title'] = 'Serial Status'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Serial Status', 'url':'serial_status_list'}]
         context['new_url'] = 'serial_status_create'
         context['can_add'] = has_permission(self.request.user, 'serial_status', 'Create')
@@ -37,7 +39,8 @@ class SerialStatusListView(ListView):
         
         context = arrange_pagination(context)
         return context
-    
+
+#! View Detail Serial Status
 class SerialStatusDetailView(DetailView):
     model = SerialStatus
     template_name = 'master/serial_status/detail.html'
@@ -46,6 +49,8 @@ class SerialStatusDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
     
+
+#! Create Serial Status
 class SerialStatusCreateView(CreateView):
     model = SerialStatus
     form_class = SerialStatusForm
@@ -60,13 +65,14 @@ class SerialStatusCreateView(CreateView):
         messages.success(self.request, 'Created Successfully')
         return super().form_valid(form)
     
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Groupte Menu'
+        context['page_title'] = 'Serial Status'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Serial Status', 'url':'serial_status_list'},{'name':'Create SerialStatus', 'url':'serial_status_create'}]
         return context
-    
+
+
+#! Update Serial Status  
 class SerialStatusUpdateView(UpdateView):
     model = SerialStatus
     form_class = SerialStatusForm
@@ -83,10 +89,11 @@ class SerialStatusUpdateView(UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Groupte Menu'
+        context['page_title'] = 'Serial Status'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Serial Status', 'url':'serial_status_list'},{'name':'Update SerialStatus'}]
         return context
-    
+
+#! Delete Serial Status 
 class SerialStatusDeleteView(DeleteView):
     model = SerialStatus
     template_name = 'menu/confirm_delete.html'

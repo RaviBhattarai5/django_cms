@@ -13,3 +13,69 @@
     </div>
   </div>
 </footer>
+
+
+    <!-- datatable cdn and js -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    // 'copyHtml5',
+                    // 'excelHtml5',
+                    // 'csvHtml5',
+                    // 'pdfHtml5',
+                    // 'print'
+                ]
+            });
+        });
+    </script> -->
+    <!-- end -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src = "https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script type = "text/javascript">
+$(document).ready(function(){
+    $('#table').DataTable();
+     
+    $('#submit').on('click', function(){
+        $category_name  = $('#category_name ').val();
+        $is_active = $('#is_active').val();
+        
+  
+        if($category_name  == "" || $is_active == ""){
+            alert("Please complete field");
+        }else{
+            $.ajax({
+                type: "POST",
+                url: "insert",
+                data:{
+                    category_name : $category_name ,
+                    is_active: $is_active,
+                 
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(){
+                    alert('Save Data');
+                    $('#category_name ').val('');
+                    $('#is_active').val('');
+                    window.location = "/";
+                }
+            });
+        }
+    });
+});
+</script>

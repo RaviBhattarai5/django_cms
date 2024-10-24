@@ -11,7 +11,7 @@ class Transporter(models.Model):
     mobile_no2 = models.CharField(max_length=10, blank=True, null=True)  # Optional second mobile number
     tracking_url = models.URLField(max_length=1000, blank=True, null=True)
     is_active = models.BooleanField(default=True, blank=True, null=True)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='transporter_created_by')
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='transporter_created_by')
     created_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='transporter_updated_by')
     updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
@@ -25,8 +25,11 @@ class Transporter(models.Model):
 
     is_delete=models.BooleanField(default=False)
 
+    # def __str__(self):
+    #     return self.transporter_name
+    
     def __str__(self):
-        return self.transporter_name
+        return self.transporter_name or 'Unnamed Transporter'  # Ensure it returns a string
 
 
     def delete(self, *args, **kwargs):

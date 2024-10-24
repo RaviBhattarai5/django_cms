@@ -1,0 +1,170 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+
+<form method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="row mb-4">
+
+        <div class="col-lg-6 col-sm-6">
+            <div class="mb-4">
+                <label for="transporter">{{form.transporter.label}} <span class="text-danger">*</span></label>
+                {{form.transporter}}
+                {% if form.transporter.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.transporter.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+            <div class="mb-4">
+                <label for="city">{{form.city.label }}<span class="text-danger">*</span></label>
+                {{form.city}}
+                {% if form.city.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.city.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <div class="mb-4 mt-4">
+                <label for="min_weight">{{form.min_weight.label}}</label>
+                {{form.min_weight}}
+                {% if form.min_weight.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.min_weight.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <div class="mb-4 mt-4">
+                <label for="min_weight">{{form.min_charge.label}}</label>
+                {{form.min_charge}}
+                {% if form.min_charge.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.min_charge.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label class="my-1 me-2" for="tpt_charge">{{form.tpt_charge.label}} <span class="text-danger">*</span></label>
+                {{form.tpt_charge}}
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label class="my-1 me-2" for="ecc_charge">{{form.ecc_charge.label}} <span class="text-danger">*</span></label>
+                {{form.ecc_charge}}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4">
+                <label class="my-1 me-2" for="fuel_surcharge">{{form.fuel_surcharge.label}} <span class="text-danger">*</span></label>
+                {{form.fuel_surcharge}}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="currency_adjustment_factor">{{form.currency_adjustment_factor.label}}</label>
+                {{form.currency_adjustment_factor}}
+                {% if form.currency_adjustment_factor.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.currency_adjustment_factor.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="docket_fees ">{{form.docket_fees.label}} </label>
+                {{form.docket_fees }}
+                {% if form.docket_fees.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.docket_fees.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="rov">{{form.rov.label }}<span class="text-danger">*</span></label>
+                {{form.rov}}
+                {% if form.rov.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.rov.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="mcc">{{form.mcc.label }}<span class="text-danger">*</span></label>
+                {{form.mcc}}
+                {% if form.mcc.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.mcc.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="oda">{{form.oda.label }}<span class="text-danger">*</span></label>
+                {{form.oda}}
+                {% if form.oda.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.oda.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="ss">{{form.ss.label }}<span class="text-danger">*</span></label>
+                {{form.ss}}
+                {% if form.ss.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.ss.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="mb-4 mt-4">
+                <label for="annual_hike">{{form.annual_hike.label }}<span class="text-danger">*</span></label>
+                {{form.annual_hike}}
+                {% if form.annual_hike.errors %}
+                <div class="invalid-feedback" style="display: block !important">
+                    {{ form.annual_hike.errors.as_text }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-sm btn-primary" type="submit">Save</button>
+        <a class="btn btn-sm btn-gray-200" href="{%url 'transporter_area_list'%}">Cancel</a>
+    </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

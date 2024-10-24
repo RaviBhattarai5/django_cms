@@ -45,9 +45,9 @@ class AreaListView(ListView):
             {"name": "Area", "url": "area_list"},
         ]
         context["new_url"] = "area_create"
-        context["can_add"] = has_permission(self.request.user, "menu", "Create")
-        context["can_edit"] = has_permission(self.request.user, "menu", "Edit")
-        context["can_delete"] = has_permission(self.request.user, "menu", "Delete")
+        context["can_add"] = has_permission(self.request.user, "area", "Create")
+        context["can_edit"] = has_permission(self.request.user, "area", "Edit")
+        context["can_delete"] = has_permission(self.request.user, "area", "Delete")
 
         context = arrange_pagination(context)
         return context

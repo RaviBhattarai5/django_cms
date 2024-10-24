@@ -9,7 +9,7 @@ from utils.permissions import has_permission
 from decorators.decorators import permission_required
 from django.utils import timezone
 
-_Menu_Slug=''
+_Menu_Slug='lead-source'
 
 class LeadSourceListView(ListView):
     model = LeadSource

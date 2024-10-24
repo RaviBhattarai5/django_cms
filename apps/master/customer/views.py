@@ -8,7 +8,7 @@ from utils.common import arrange_pagination
 from utils.permissions import has_permission
 from decorators.decorators import permission_required
 
-_menu_slug=''
+_menu_slug='customer'
 
 #! ListView..
 class CustomerListView(ListView):
@@ -33,9 +33,9 @@ class CustomerListView(ListView):
         context['page_title'] = 'Customer'
         context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'Customer', 'url':'customer_list'}]
         context['new_url'] = 'customer_create'
-        context['can_add'] = has_permission(self.request.user, 'menu', 'Create')
-        context['can_edit'] = has_permission(self.request.user, 'menu', 'Edit')
-        context['can_delete'] = has_permission(self.request.user, 'menu', 'Delete')
+        context['can_add'] = has_permission(self.request.user, 'customer', 'Create')
+        context['can_edit'] = has_permission(self.request.user, 'customer', 'Edit')
+        context['can_delete'] = has_permission(self.request.user, 'customer', 'Delete')
         
         context = arrange_pagination(context)
         return context
@@ -113,7 +113,7 @@ class CustomerUpdateView(UpdateView):
 #! DeleteView
 class CustomerDeleteView(DeleteView):
     model = CustomerMaster
-    template_name = 'menu/confirm_delete.html'
+    template_name = 'customer/confirm_delete.html'
     success_url = reverse_lazy('customer_list')
     
     @permission_required(_menu_slug,'Delete')

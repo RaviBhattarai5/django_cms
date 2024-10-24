@@ -1,0 +1,58 @@
+{% extends "layouts/base.html" %} {%load static%}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %} {% endblock stylesheets %}
+
+<!-- Page Content  -->
+{% block content %} {%for message in messages%} {{message}} {%endfor%}
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="enquiry_stage_name">{{form.enquiry_stage_name.label}}<span class="text-danger">*</span></label>
+        {{form.enquiry_stage_name}} {% if form.enquiry_stage_name.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.enquiry_stage_name.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="serial_no">{{form.serial_no.label}}<span class="text-danger">*</span></label>
+        {{form.serial_no}} {% if form.serial_no.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.serial_no.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+
+
+    <div class="col-lg-4 col-sm-6">
+      <div class="mb-4">
+        <label for="is_active">is_active</label>
+        {{form.is_active}} {% if form.is_active.errors %}
+        <div class="invalid-feedback" style="display: block !important">
+          {{ form.is_active.errors.as_text }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+  <div class="mb-4">
+    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+    <a class="btn btn-sm btn-gray-200" href="{%url 'enquiry_stage_list'%}">Cancel</a>
+  </div>
+</form>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="{%static 'assets/js/form-error.js'%}"></script>
+{% endblock javascripts %}

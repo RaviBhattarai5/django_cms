@@ -67,7 +67,7 @@ class LinkCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Create Links'
-        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'links', 'url':'link_list'},{'name':'Create Links', 'url':'links_create'}]
+        context['breadcrumbs'] = [{'name':'Dashboard', 'url':'dashboard'},{'name':'links', 'url':'link_list'},{'name':'Create Links', 'url':'link_create'}]
         return context
     
 class LinkUpdateView(UpdateView):
