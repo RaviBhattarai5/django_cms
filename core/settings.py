@@ -73,9 +73,7 @@ EXTERNAL_APPS=[
     'apps.master.ecc',
     'apps.master.transporter',
     'apps.master.party',
-<<<<<<< HEAD
     'apps.master.lead_source',
-
     'apps.master.fms_stage',
     'apps.master.links',
     'apps.master.fms_contact',
@@ -83,9 +81,8 @@ EXTERNAL_APPS=[
     'apps.master.transporter_area',
     'apps.master.enquiry_stage',
     'apps.master.enquiry_status',
-=======
     'apps.master.activity',
->>>>>>> 338e65820ce02c65fbf7046bfb8f3090d269e5fb
+    'apps.master.fms_status'
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)
