@@ -7,7 +7,7 @@ class StateForm(forms.ModelForm):
         fields = ['country', 'state_code', 'state_name', 'capital_name', 'disable']  
         
         widgets = {
-            'country': forms.Select(attrs={'class': 'form-control'}),  
+            'country': forms.Select(attrs={'class': 'form-select'}),  
             'state_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state code'}),
             'state_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter state name'}),
             'capital_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter capital name'}),

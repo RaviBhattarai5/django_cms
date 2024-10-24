@@ -7,7 +7,7 @@ class CityForm(forms.ModelForm):
         fields = ['name', 'state','disable']  
         
         widgets = {
-            'state': forms.Select(attrs={'class': 'form-control'}),  
+            'state': forms.Select(attrs={'class': 'form-select'}),  
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter City name'}),
             'disable': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }

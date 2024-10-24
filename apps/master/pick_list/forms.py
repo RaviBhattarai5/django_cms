@@ -8,7 +8,7 @@ class PickListForm(forms.ModelForm):
 
         widgets = {
             'pick_list_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Pick List Name'}),
-            'parent': forms.Select(attrs={'class': 'form-control'}),
+            'parent': forms.Select(attrs={'class': 'form-select'}),
             'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'serial_no': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Serial Number'}),
         }

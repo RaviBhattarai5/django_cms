@@ -11,13 +11,13 @@ class MasterGroupForm(forms.ModelForm):
         ]
         widgets = {
             'group_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Group Name'}),
-            'category_id': forms.Select(attrs={'class': 'form-control'}),
+            'category_id': forms.Select(attrs={'class': 'form-select'}),
             'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'created_by': forms.Select(attrs={'class': 'form-control'}),  
+            'created_by': forms.Select(attrs={'class': 'form-select'}),  
             'created_date': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD HH:MM:SS' }),
-            'updated_by': forms.Select(attrs={'class': 'form-control'}),
+            'updated_by': forms.Select(attrs={'class': 'form-select'}),
             'updated_date': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD HH:MM:SS' }),
-            'deleted_by': forms.Select(attrs={'class': 'form-control'}),
+            'deleted_by': forms.Select(attrs={'class': 'form-select'}),
             'deleted_date': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD HH:MM:SS'}),
         }
 

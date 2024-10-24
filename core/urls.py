@@ -38,6 +38,7 @@ urlpatterns = [
     path('ecc/',include('apps.master.ecc.urls')),
     path('master-tpl-ecc-charge/',include('apps.master.tpl_ecc_charge.urls')),
     path('party/',include('apps.master.party.urls')),
+<<<<<<< HEAD
     path('master-transporter/',include('apps.master.transporter.urls')),
     path('master-holiday-type/', include('apps.master.holiday_type.urls')),
     path('master-lead-source/', include('apps.master.lead_source.urls')),
@@ -49,4 +50,7 @@ urlpatterns = [
     path('master-enquiry-stage/', include('apps.master.enquiry_stage.urls')),
     path('master-enquiry-status/', include('apps.master.enquiry_status.urls')),
 
+=======
+    path('activity/',include('apps.master.activity.urls')),
+>>>>>>> 338e65820ce02c65fbf7046bfb8f3090d269e5fb
 ] 
